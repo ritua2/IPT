@@ -1,11 +1,19 @@
 # IPT
 Interactive Parallelization Tool
-Interactive Parallelization Tool
 
-The *.zip file named testing_scripts.zip contains 1) sample serial programs, 2) parallel versions of the sample programs geenrated using IPT, 3) a bash script to test the code correctness, and 4) sample input files (*.txt)
+The *.zip file named testing_scripts.zip contains 
+1) sample serial programs, 
+2) parallel versions of the sample programs geenrated using IPT, 
+3) a bash script to test the code correctness, and 
+4) sample input files (*.txt)
+
+The core IPT code will be shortly made available under the new BSD license.
 
 
-References
+
+
+# References
+
 [1] Ritu Arora, Julio Olaya, and Madhav Gupta. 2014. A Tool for Interactive Parallelization. In Proceedings of the 2014 Annual Conference on Extreme Science and Engineering Discovery Environment (XSEDE '14). ACM, New York, NY, USA, , Article 51 , 8 pages. DOI: http://dx.doi.org/10.1145/2616498.2616558
 
 [2] Madhav Gupta, Youtube video on Parallelizing the Molecular Dynamics Code with MPI, accessed on August 10th, 2017: https://www.youtube.com/watch?v=sg9HDTz0zbo
