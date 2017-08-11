@@ -10,7 +10,7 @@ The *.zip file named testing_scripts.zip contains
 The core IPT code will be shortly made available under the new BSD license.
 
 
-# FUNDING SOURCE(S)
+# Funding Source(s)
 National Science Foundation Award #1642396
 
 
