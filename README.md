@@ -9,6 +9,9 @@ The *.zip file named testing_scripts.zip contains
 
 The core IPT code will be shortly made available under the new BSD license.
 
+# IPT web-portal 
+The IPT web-portal related assets are available at the following link:
+https://bitbucket.org/jstubbs/ipt-web/src
 
 # Funding Source(s)
 National Science Foundation Award #1642396
