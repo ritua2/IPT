@@ -1,5 +1,5 @@
-# IPT
-Interactive Parallelization Tool
+# Interactive Parallelization Tool (IPT)
+
 
 The *.zip file named testing_scripts.zip contains 
 1) sample serial programs, 
