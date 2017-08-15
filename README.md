@@ -3,7 +3,7 @@
 
 The *.zip file named testing_scripts.zip contains 
 1) sample serial programs, 
-2) parallel versions of the sample programs geenrated using IPT, 
+2) parallel versions of the sample programs generated using IPT, 
 3) a bash script to test the code correctness, and 
 4) sample input files (*.txt)
 
