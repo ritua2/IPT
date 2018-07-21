@@ -1,0 +1,30 @@
+0 : int i;
+1 : int j;
+2 : double x[30000 + 2][30000 + 2];
+3 : double y[30000 + 2][30000 + 2];
+4 : double sum;
+5 : double tmp;
+6 : struct timeval start;
+7 : struct timeval end;
+8 : float delta;
+9 : for ( i = 0;;;i <= 30000 + 1;;i++) {
+10 : 	for ( j = 0;;;j <= 30000 + 1;;j++) {
+11 : 		x[i][j] =((double )((i + j) % 3)) - 0.9999;
+12 : 	} 
+13 : } 
+14 : printf("\nMemory allocation done successfully\n");
+15 : gettimeofday(&start,((void *)0));
+16 : #pragma omp parallel default(none) shared(sum,x,y) private(j,i,tmp)
+17 : #pragma omp for reduction( + :sum)
+18 : for ( j = 1;;;j < 30000 + 1;;j++) {
+19 : 	for ( i = 1;;;i < 30000 + 1;;i++) {
+20 : 		tmp = 0.2 *(x[i][j] + x[i - 1][j] + x[i + 1][j] + x[i][j - 1] + x[i][j + 1]);
+21 : 		y[i][j] = tmp;
+22 : 		sum = sum + tmp;
+23 : 	} 
+24 : } 
+25 : gettimeofday(&end,((void *)0));
+26 : delta =(((end . tv_sec - start . tv_sec) * 1000000u + end . tv_usec - start . tv_usec) / 1.e6);
+27 : printf("\nThe total sum is: %lf\n",sum);
+28 : printf("run time = %fs\n",delta);
+29 : return 0;
