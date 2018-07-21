@@ -10,7 +10,8 @@ The *.zip file named testing_scripts.zip contains
 The core IPT code will be made available shortly under the new BSD license.
 
 # IPT web-portal 
-The IPT web-portal related assets are available at the following link:
+The IPT web-portal related assets are available at the following links:
+https://github.com/ritua2/ipt-web 
 https://bitbucket.org/jstubbs/ipt-web/src
 
 # Funding Source(s)
