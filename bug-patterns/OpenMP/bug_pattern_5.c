@@ -5,7 +5,7 @@ int main(){
   int sum = 0;
 
   // initializing array T 
-  for ( i = 0; i < 10; i ++) {
+  for (int  i = 0; i < 10; i ++) {
     T[i] = i;
   }
 

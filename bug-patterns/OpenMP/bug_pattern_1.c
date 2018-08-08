@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-um = 1;
+int sum = 1;
 
 // increase sum by 10 using openmp 
  #pragma omp parallel reduction(+ :sum) 
