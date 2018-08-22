@@ -11,7 +11,7 @@ int main(){
     for ( int i = 0; i < 10; i ++) {
       #pragma omp critical 
       {
-	sum +=1;
+	      ddsum +=1;
       }
     }
   }
