@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <mpi.h> 
 
+/*
+  To expose the bug: running with 2 MPI process
+*/
 int main()
 {
   int size;
@@ -8,11 +11,11 @@ int main()
   MPI_Init(NULL,NULL);
   MPI_Comm_size(MPI_COMM_WORLD,&size);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
-  int arr [10];
+  int arr [100];
 
   
   // calculating the number of iterations that each process will execute
-  int range = 10/size;
+  int range = 100/size;
 
   // calculating the start and end value of the for loop for each process
   int p_start_value = rank*range;
@@ -21,7 +24,7 @@ int main()
   for (int i = p_start_value ; i < p_end_value; i++) {
 
     // compute all elements at even indexes first
-    if (i < 5) {
+    if (i < 50) {
       arr[i*2] =2 ;
     }
 
@@ -32,9 +35,11 @@ int main()
   }
 
   // Gathering the elements from each process to get the final array
-  int rev [10];
+  int rev [100];
   MPI_Gather(&arr[rank*range],range, MPI_INT,rev, range,MPI_INT,0, MPI_COMM_WORLD);
-
+  if (rank == 0)
+    for (int i =0; i < 100; i++)
+      printf("a[%d] = %d\n",i,rev[i]);
   MPI_Finalize();
   return 0;
 }

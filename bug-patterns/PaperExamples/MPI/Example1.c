@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <mpi.h> 
 
+/*
+  To expose the bug: running with 2 MPI process
+*/
 int main()
 {
+
   int size;
   int rank;
   MPI_Init(NULL,NULL);
   MPI_Comm_size(MPI_COMM_WORLD,&size);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
   // calculating the number of iterations that each process will execute
-  int range = 10/size;
+  int range = 100/size;
 
   // calculating the start and end value of the for loop for each process
   int p_start_value = rank*range;
@@ -28,7 +32,8 @@ int main()
 
 // Reassign total sum value to "sum" variable 
   sum = receive_placeholder;
-
+  if (rank == 0) 
+    printf ("sum = %d\n",sum);  
   MPI_Finalize();
   return 0;
 }

@@ -26,8 +26,8 @@ int main()
   int receive_placeholder = 0
   MPI_Allreduce(&sum,&receive_placeholder,1,MPI_INT,MPI_SUM,MPI_COMM_WORLD);
 
-// Reassign total sum value to "sum" variable 
- sum = receive_placeholder;
+  // Reassign total sum value to "sum" variable 
+  sum = receive_placeholder;
   MPI_Finalize();
   return 0;
 }
