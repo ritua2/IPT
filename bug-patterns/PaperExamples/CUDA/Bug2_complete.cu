@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-void __global__ kernel0(int64_t Npart,int64_t* totalNpairs){
+void __global__ kernel0(int64_t Npart,int64_t* totalNpairs, int64_t* npairs){
 
  int64_t i =  blockIdx.x * blockDim.x + threadIdx.x;
  if(i< Npart) {
@@ -12,6 +12,14 @@ void __global__ kernel0(int64_t Npart,int64_t* totalNpairs){
    }
  }
  __syncthreads();
+ // the code below for reduction is incorrect and should be commented, while the commented code in the main function should be uncommented
+  if(i==0){
+     for(int64_t k=0; k<Npart; k++){
+      for (int64_t j=0; j<Npart; j++){
+              npairs[j] += totalNpairs[(k*Npart)+ j];
+      }
+   }
+ 
 }
 
 //uncomment the code below for getting correct results
@@ -69,15 +77,14 @@ int main(int argc,char **argv){
   cudaMemcpy(device_totalNpairs,totalNpairs,(Npart*Npart)*sizeof(int64_t),cudaMemcpyHostToDevice);
 
 
-  kernel0<<<dimGrid,dimBlock>>>(Npart, device_totalNpairs);
+  kernel0<<<dimGrid,dimBlock>>>(Npart, device_totalNpairs, device_npairs);
 
  
   cudaMemcpy(totalNpairs,device_totalNpairs,(Npart*Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost); 
   //uncomment the code below to get correct results
   //kernel1<<<dimGrid,dimBlock>>>(device_npairs,device_totalNpairs, Npart);
 
-
-  cudaMemcpy(npairs,device_npairs,(Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost);
+  //cudaMemcpy(npairs,device_npairs,(Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost);
 
   cudaFree(device_npairs);
   cudaFree(device_totalNpairs);
