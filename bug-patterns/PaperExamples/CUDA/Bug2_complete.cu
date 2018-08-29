@@ -15,10 +15,11 @@ void __global__ kernel0(int64_t Npart,int64_t* totalNpairs, int64_t* npairs){
  // the code below for reduction is incorrect and should be commented, while the commented code in the main function should be uncommented
   if(i==0){
      for(int64_t k=0; k<Npart; k++){
-      for (int64_t j=0; j<Npart; j++){
+       for (int64_t j=0; j<Npart; j++){
               npairs[j] += totalNpairs[(k*Npart)+ j];
-      }
-   }
+       }
+     }
+  }
  
 }
 
