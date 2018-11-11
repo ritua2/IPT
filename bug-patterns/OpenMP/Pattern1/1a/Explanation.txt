@@ -1,0 +1,1 @@
+The error is because the for keyword was not included in the openmp pragma
