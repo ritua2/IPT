@@ -23,8 +23,7 @@ void __global__ kernel0(int64_t Npart,int64_t* totalNpairs, int64_t* npairs){
  
 }
 
-//uncomment the code below for getting correct results
-/*
+
 void __global__ kernel1(int64_t *npairs, int64_t* totalNpairs, int64_t Npart){
 
  int64_t i =  blockIdx.x * blockDim.x + threadIdx.x;
@@ -39,7 +38,7 @@ void __global__ kernel1(int64_t *npairs, int64_t* totalNpairs, int64_t Npart){
  }
 
 }
-*/
+
 
 int main(int argc,char **argv){
   int64_t *device_npairs;
@@ -82,10 +81,10 @@ int main(int argc,char **argv){
 
  
   cudaMemcpy(totalNpairs,device_totalNpairs,(Npart*Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost); 
-  //uncomment the code below to get correct results
-  //kernel1<<<dimGrid,dimBlock>>>(device_npairs,device_totalNpairs, Npart);
+  
+  kernel1<<<dimGrid,dimBlock>>>(device_npairs,device_totalNpairs, Npart);
 
-  //cudaMemcpy(npairs,device_npairs,(Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost);
+  cudaMemcpy(npairs,device_npairs,(Npart)*sizeof(int64_t), cudaMemcpyDeviceToHost);
 
   cudaFree(device_npairs);
   cudaFree(device_totalNpairs);

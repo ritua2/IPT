@@ -1,0 +1,4 @@
+Incorrect specification of storage attributes for the variables used in both serial and parallel regions
+
+
+Since i is initialized outside after the parallel region and used inside, it needs to be under lastprivate clause.
