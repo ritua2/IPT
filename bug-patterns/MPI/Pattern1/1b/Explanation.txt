@@ -1,0 +1,9 @@
+The error occurs due to incorrect balancing the workload.
+
+In the buggy version:
+
+``````````````````````````````
+int range = 100/size;
+``````````````````````````````
+
+range variable will not be captured correctly in case size is not divisible by 100.
