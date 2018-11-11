@@ -12,7 +12,7 @@ int main()
 
   // initializing array "arr" at rank 0
   if (rank = 0) {
-    for (int i =0; i < 10; i++) {
+    for (int i =0; i < 12; i++) {
       arr[i] = i;
     }
   }
@@ -51,7 +51,7 @@ int main()
   MPI_Scatterv(arr,count,displacement, MPI_INT, recvbuf,count[rank],MPI_INT,0, MPI_COMM_WORLD);
 
   // increase the elements by one ( 2 at a time)
-  for (int i = 0 ; i < range ; i++) {
+  for (int i = start ; i < range ; i++) {
     recvbuf[i] += 1;
     recvbuf[i+1] += 1;
   }
