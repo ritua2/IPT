@@ -1,0 +1,1 @@
+MPI_Type_get_extent arguments cannot be NULL

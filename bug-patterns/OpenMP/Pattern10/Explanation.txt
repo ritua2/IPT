@@ -1,0 +1,1 @@
+Using reduction value inside of the reducrion for loop

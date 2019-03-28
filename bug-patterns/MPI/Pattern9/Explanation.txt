@@ -1,0 +1,1 @@
+Incorrect usage of Bcast, it needs to be call from all nodes.
