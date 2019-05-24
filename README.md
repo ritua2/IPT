@@ -1,6 +1,6 @@
 # Interactive Parallelization Tool (IPT)
 
-This repository mainly contains the training and testing material for IPT, link to the repository for ipt-web code, and some translator code.
+This repository contains the training and testing material related to IPT, link to the repository for ipt-web code, code for teaching logical errors in paralel programs, and some translator code.
 
 The *.zip file named testing_scripts.zip contains 
 1) sample serial programs, 

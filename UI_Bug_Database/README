@@ -1,0 +1,3 @@
+This folder contains the code for the UI to interact with the bugs database.
+
+The code for Git File Explorer can be used only on Windows, therefore no makefile has been included. Also, the runnable jar can be used directly following instructions. Clicking a correct folder on tree will show you the contents of required file.
