@@ -1,0 +1,3 @@
+Dangerous practice with initializing array used in MPI call.
+
+TODO: more explanation needed
