@@ -6,7 +6,9 @@ Creation of Docker image: Carlos Redondo
 Design and bug repo curation: Ritu Arora
 
 Steps for installation (set-up):
-
+N/A
 
 
 Steps for using/running the code:
+java -jar BugDatabase.jar <database-name> <username> <passwd (if applicable)>
+
