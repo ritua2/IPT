@@ -1,0 +1,9 @@
+The error occurs due to incorrect variable initialization.
+
+In the buggy version:
+
+``````````````````````````````
+int sum =1;
+``````````````````````````````
+
+For all processes involved, sum will start at 1. This will cause wrong output for the computation.

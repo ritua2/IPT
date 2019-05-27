@@ -1,0 +1,5 @@
+The error is because incorrect collection of non-contiguous data.
+
+The data is computed as odd-first even-second order.
+
+However, the collective is in contiguous order. Therefore, the collected data will be erroneous 

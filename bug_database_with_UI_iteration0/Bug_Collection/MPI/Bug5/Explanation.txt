@@ -1,0 +1,5 @@
+Incorrect handling of break statements in for-loops
+
+The error occurs due to incorrectly handle break statements for the case which process computes different number of workload.
+
+The allreduce call requires involment of all processes which due to break and different number of workload, it cause the program to hang.

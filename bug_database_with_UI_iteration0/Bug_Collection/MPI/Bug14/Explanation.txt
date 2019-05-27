@@ -1,0 +1,2 @@
+Node 0 performs both Send to itself and Receive from itself. 
+This may create deadlock. 
