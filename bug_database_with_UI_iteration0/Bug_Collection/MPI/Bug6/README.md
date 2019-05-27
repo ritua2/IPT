@@ -1,1 +1,9 @@
-Run with number of process that is divisible number of my elements
+### Instructions
+
+#### Compile:
+mpicc -o buggy_version buggy_version.c
+
+#### Run:
+ibrun -np 4 buggy_version
+
+
