@@ -6,13 +6,18 @@ Creation of Docker image: Carlos Redondo
 Design and bug repo curation: Ritu Arora
 
 Steps for installation (set-up):
-install mysql
-start mysql
-creat a mysql database
-going to Bug_Collection folder
-run command: python3 Data_Populate.py -host localhost -database <database> -user <username> -passwd <password (if applicable)>
-
+apt install mysql-server(install mysql)
+mysql -u root -e "create database <database>"; (creat a mysql database)
+mysql -u root -e "USE mysql; UPDATE user SET plugin='mysql_native_password' WHERE User='root'; FLUSH PRIVILEGES;" (setting up root user)
+apt install default-jre (install jdk)
+apt-get install python3 (install python3)
+apt install python3-pip (install pip3)
+pip3 install  mysql-connector (install mysql-connector library)
+apt-get install xterm (install xtearm)
+cd Bug_Collection (going to Bug_Collection folder)
+python3 Data_Populate.py -host localhost -database <database> -user root -passwd <password (if applicable)> (populating the database)
+cd .. (get back to the original folder)
 
 Steps for using/running the code:
-java -jar BugDatabase.jar <database-name> <username> <passwd (if applicable)>
+java -jar BugDatabase.jar <database-name> root <passwd (if applicable)>
 
