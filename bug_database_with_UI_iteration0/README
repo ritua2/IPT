@@ -12,6 +12,8 @@ creat a mysql database
 going to Bug_Collection folder
 run command: python3 Data_Populate.py -host localhost -database <database> -user <username> -passwd <password (if applicable)>
 
+Install JDK
+
 
 Steps for using/running the code:
 java -jar BugDatabase.jar <database-name> <username> <passwd (if applicable)>
