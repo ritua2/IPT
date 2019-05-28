@@ -24,7 +24,7 @@ cd Bug_Collection # going to Bug_Collection folder
 python3 Data_Populate.py -host localhost -database <database> -user root -passwd <password (if applicable)> # populating the database
 cd .. (get back to the original folder)
 
-Steps for using/running the code:
+# Steps for using/running the code:
 java -jar BugDatabase.jar <database-name> root <passwd (if applicable)>
 ```
 
@@ -39,14 +39,25 @@ cd IPT/bug_database_with_UI_iteration0
 # Build the image
 docker build -t ipt/bugs-database:latest .
 
-# Change the name of the bug database with mysql_database 
-## for mac system
+
+# Linux systems
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
+
+
+# Note, if using root:
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="/root/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
+
+
+# Mac systems
 IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 xhost + $IP
 docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
-
-## for linux system
-docker run --env="DISPLAY" -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
 ```
 
+
+**Note**: If running this application on a cloud system, ensure that the login is done using ssh -X or similar:
+
+```bash
+ssh -X username@server.example.com
+```
 
