@@ -14,4 +14,14 @@ cd Bug_Collection # going to Bug_Collection folder
 python3 Data_Populate.py -host localhost -database "$mysql_database" -user root -passwd "$mysql_password" # populating the database
 cd .. # get back to the original folder
 
-java -jar BugDatabase.jar "$mysql_database" root "$mysql_password"
+
+# To use the pre-compiled jar file
+#java -jar BugDatabase.jar "$mysql_database" root "$mysql_password"
+
+
+# Intructions for compilations from source
+
+export CLASSPATH=/IPT/UI/mysql-connector-java-8.0.16.jar:$CLASSPATH
+
+javac -cp mysql-connector-java-8.0.16.jar BaseView.java
+java BaseView "$mysql_database" root "$mysql_password"
