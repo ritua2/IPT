@@ -1,1 +1,10 @@
 Incorrect usage of Bcast, it needs to be call from all nodes.
+In details, in the buggy version:
+``````````````````````````````
+  if (rank == root) {
+    ...
+    MPI_Bcast(arr, N, MPI_INT, root, MPI_COMM_WORLD);
+  }
+``````````````````````````````
+
+This will cause only the root calling the Bcast and create the deadlock since it (the root) needs to wait for Bcast answer from other node.
