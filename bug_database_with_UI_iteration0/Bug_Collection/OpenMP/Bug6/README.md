@@ -1,7 +1,7 @@
 ### Instruction
 
 #### Compile:
-gcc -o byggy_version byggy_version.c
+gcc -fopenmp -o buggy_version buggy_version.c
 
 #### Run
-./byggy_version
+./buggy_version

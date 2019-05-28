@@ -1,7 +1,7 @@
 ### Instruction
 
 #### Compile:
-gcc -o buggy_version buggy_version.c
+gcc -fopenmp -o buggy_version buggy_version.c
 
-#### Run
+#### Run:
 ./buggy_version
