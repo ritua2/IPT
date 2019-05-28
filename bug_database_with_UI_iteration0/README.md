@@ -24,7 +24,7 @@ cd Bug_Collection # going to Bug_Collection folder
 python3 Data_Populate.py -host localhost -database <database> -user root -passwd <password (if applicable)> # populating the database
 cd .. (get back to the original folder)
 
-Steps for using/running the code:
+# Steps for using/running the code:
 java -jar BugDatabase.jar <database-name> root <passwd (if applicable)>
 ```
 
@@ -40,7 +40,7 @@ cd IPT/bug_database_with_UI_iteration0
 docker build -t ipt/bugs-database:latest .
 
 # Change the name of the bug database with mysql_database
-docker run --env="DISPLAY" -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password=password1 --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
 ```
 
 

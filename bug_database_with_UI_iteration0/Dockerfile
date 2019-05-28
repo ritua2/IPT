@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 
 ENV mysql_database "ipt_bugs"
+ENV mysql_password "samplepassword"
 
 
 COPY Bug_Collection   /IPT/UI/Bug_Collection
