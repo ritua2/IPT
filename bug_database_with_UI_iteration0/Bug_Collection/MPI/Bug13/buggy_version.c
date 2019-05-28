@@ -3,14 +3,6 @@
 #include "mpi.h"
 #include<math.h>
 
-int main(int argc, char* argv[]){
-/* start up MPI */
-
-MPI_Init(&argc, &argv);
-
-#include<stdio.h>
-#include<mpi.h>
-
 double a[15][15];
 
 int main(int argc, char **argv)
@@ -66,8 +58,4 @@ int main(int argc, char **argv)
         }
     }
     MPI_Finalize();
-}
-
-MPI_Finalize(); 
-return 0;
 }

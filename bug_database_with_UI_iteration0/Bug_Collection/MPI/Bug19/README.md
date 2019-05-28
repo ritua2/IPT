@@ -1,9 +1,9 @@
 ### Instructions
 
 #### Compile:
-mpicc -o bug_pattern_1 bug_pattern_1.c
+mpicc -o buggy_version buggy_version.c
 
 #### Run:
-ibrun -np 3 bug_pattern_1
+ibrun -np 2 buggy_version
 
 

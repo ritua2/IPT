@@ -20,7 +20,6 @@ int main(int argc, char** argv) {
       arr[i] = i * i + 1;
     }
   }
-  int* arr = new int[N];
   MPI_Bcast(arr, N, MPI_INT, root, MPI_COMM_WORLD);
   transform_row(arr, rank * 100);
   int* transformed = new int[N * ranksize];

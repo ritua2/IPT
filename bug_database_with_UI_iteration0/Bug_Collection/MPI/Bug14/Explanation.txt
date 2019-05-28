@@ -1,2 +1,14 @@
-Node 0 performs both Send to itself and Receive from itself. 
-This may create deadlock. 
+Node 0 performs both Send to itself without Receive from itself.
+``````````````````````````````
+	for (i = 0; i < numprocs; i++) //masternode distributes matrix A to every single core
+	{   
+		...
+		MPI_Send(&meta[0], 3, MPI_INT, i, TAG, MPI_COMM_WORLD);
+		...
+		MPI_Send(&MA[0], ASpalten*AZeilen, MPI_DOUBLE, i, TAG, MPI_COMM_WORLD);
+		...
+		MPI_Send(&MB[0], ASpalten*BSpalten, MPI_DOUBLE, i, TAG, MPI_COMM_WORLD);
+		...
+	}
+``````````````````````````````
+Since the node needs to block for the send call and wait for the receive, this may create deadlock. 
