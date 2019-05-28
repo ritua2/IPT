@@ -39,8 +39,18 @@ cd IPT/bug_database_with_UI_iteration0
 # Build the image
 docker build -t ipt/bugs-database:latest .
 
+
 # Change the name of the bug database with mysql_database
 docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password=password1 --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
+
+# Change the name of the bug database with mysql_database 
+## for mac system
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+xhost + $IP
+docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
+
+## for linux system
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --rm ipt/bugs-database:latest
 ```
 
 

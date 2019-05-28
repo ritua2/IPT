@@ -6,8 +6,8 @@ ENV mysql_password "samplepassword"
 
 
 COPY Bug_Collection   /IPT/UI/Bug_Collection
-COPY BugDatabase      /IPT/UI/BugDatabase
-COPY BugDatabase      /IPT/UI/BugDatabase_lib 
+#COPY BugDatabase      /IPT/UI/BugDatabase
+#COPY BugDatabase_lib      /IPT/UI/BugDatabase_lib 
 COPY BugDatabase.jar  /IPT/UI/BugDatabase.jar
 COPY setup.sh         /IPT/UI/setup.sh
 
