@@ -36,6 +36,10 @@ java -jar BugDatabase.jar <database-name> root <passwd (if applicable)>
 git clone https://github.com/ritua2/IPT
 cd IPT/bug_database_with_UI_iteration0
 
+
+# Download the MySQL client for java and Ubuntu from https://dev.mysql.com/downloads/file/?id=485756
+# Install it on the current directory
+
 # Build the image
 docker build -t ipt/bugs-database:latest .
 
