@@ -7,14 +7,13 @@ int main(){
 	#pragma omp parallel for private(d)
   	{
 		for ( i = 0 ; i < nt1 ; i++ ) {
-		  d = distancia(tabla1[i],tabla2[j]);
-		  if ( d < dm ) {
+			d = distancia(tabla1[i],tabla2[j]);
 		    #pragma omp critical
 		    if ( d < dm ) {
 		      dm = d;
 		      im = i;
 		    }
-		  }
+		  
 		}
 	}
 	ps[j] = im;

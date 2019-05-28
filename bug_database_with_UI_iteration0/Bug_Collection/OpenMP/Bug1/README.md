@@ -1,7 +1,7 @@
 ### Instruction
 
 #### Compile:
-gcc -o bug_pattern_1 bug_pattern_1.c
+gcc -o buggy_version buggy_version.c
 
 #### Run
-./bug_pattern_1
+./buggy_version

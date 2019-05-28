@@ -1,7 +1,7 @@
 ### Instruction
 
 #### Compile:
-gcc -o bug_pattern_6 bug_pattern_6.c
+gcc -o byggy_version byggy_version.c
 
 #### Run
-./bug_pattern_6
+./byggy_version

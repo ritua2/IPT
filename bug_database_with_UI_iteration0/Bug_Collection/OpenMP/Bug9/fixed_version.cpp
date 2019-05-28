@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<math.h>
 
 bool checkPrime(int n) {
     if (n == 2) return true;

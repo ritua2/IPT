@@ -1,1 +1,13 @@
-Using reduction value inside of the reducrion for loop
+Using reduction value inside of the reduction for loop.
+In details, in the buggy program:
+
+``````````````````````````````
+#pragma omp parallel for reduction(+: sum)
+    for (int i = 0; i < DATA_MAG; i++)
+    {
+        sum += H[i];
+        ...
+    }
+``````````````````````````````
+
+Since `sum` is not thread independent, it need to be either computed using atomic/critical section for not under openmp block at all.
