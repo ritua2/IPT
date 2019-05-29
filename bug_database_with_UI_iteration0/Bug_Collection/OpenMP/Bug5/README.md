@@ -1,7 +1,7 @@
 ### Instruction
 
 #### Compile:
-gcc -o bug_pattern_5 bug_pattern_5.c
+gcc -fopenmp -o buggy_verion buggy_verion.c
 
 #### Run
-./bug_pattern_5
+./buggy_verion

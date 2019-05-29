@@ -1,3 +1,8 @@
-Error due to not using critical section
-
-Since the update of T is related to each other, T needs to be shared.
+Error due to not using critical section.
+In details, in the buggy version:
+``````````````````````````````
+for (int j =0; j < 10; j++) {
+      T[j] +=1;
+    }
+``````````````````````````````
+Since the update of `T` elements in  each iteration is related to each other, `T` needs to be under atomic clause.

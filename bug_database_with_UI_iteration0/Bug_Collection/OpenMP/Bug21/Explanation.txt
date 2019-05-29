@@ -1,0 +1,7 @@
+variable clause error.
+In details, in the buggy version:
+``````````````````````````````
+  #pragma omp parallel for private(i) reduction( + : sum )
+``````````````````````````````
+
+Since `i` is set outside of the omp block, it needs to be under firstprivate clause.

@@ -6,9 +6,10 @@ int main(){
 
   // increase sum by one each iteratiob using openmp 
   #pragma omp parallel for private(i) reduction( + : sum )
-  for (i = i; i < 100; i++) {
+  for (int j  = i; j < 100; j++) {
     sum +=1;
   }
+
   printf("sum is %d\n",sum);
 }
 

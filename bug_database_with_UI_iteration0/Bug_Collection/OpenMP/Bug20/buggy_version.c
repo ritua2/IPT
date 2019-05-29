@@ -1,8 +1,8 @@
 #include<stdio.h>
-
+#include <stdlib.h>   
 int main(){
   int T[10];
-
+  srand (1);
   // initializing array T 
   for (int  i = 0; i < 10; i ++) {
     T[i] = i;
