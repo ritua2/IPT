@@ -19,9 +19,9 @@ COPY BugDatabase/src/BaseView.java    /IPT/UI/BaseView.java
 WORKDIR /IPT/UI
 
 
-RUN apt-get update && apt install mysql-server default-jre default-jdk ecj python3 python3-pip -y && pip3 install  mysql-connector && apt-get install xterm -y &&\
+RUN apt-get update && apt install mysql-server default-jre default-jdk ecj python3 python3-pip libcr-dev mpich -y &&\
+    pip3 install  mysql-connector && apt-get install xterm -y &&\
     chmod +x /IPT/UI/setup.sh
 
 
 CMD ./setup.sh
-
