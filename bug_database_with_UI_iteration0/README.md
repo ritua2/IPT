@@ -30,7 +30,7 @@ java -jar BugDatabase.jar <database-name> root <passwd (if applicable)>
 
 
 
-## Installation with Docker
+## Installation with Docker 
 
 ```bash
 git clone https://github.com/ritua2/IPT
@@ -38,7 +38,7 @@ cd IPT/bug_database_with_UI_iteration0
 
 
 # Build the image
-docker build -t carlosred/ipt_bugs-database:latest .
+docker build -t carlosred/ipt_bugs-database:latest -f Dockerfile .
 
 
 # Linux systems
@@ -54,6 +54,33 @@ IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 xhost + $IP
 docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:latest
 ```
+
+
+## Installation with Docker (CUDA)
+
+```bash
+git clone https://github.com/ritua2/IPT
+cd IPT/bug_database_with_UI_iteration0
+
+
+# Build the image
+docker build -t carlosred/ipt_bugs-database:cuda -f Dockerfile.CUDA .
+
+
+# Linux systems
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
+
+
+# Note, if using root:
+docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="/root/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
+
+
+# Mac systems
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+xhost + $IP
+docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
+```
+
 
 
 **Note**: If running this application on a cloud system, ensure that the login is done using ssh -X or similar:
