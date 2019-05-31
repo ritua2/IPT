@@ -1,3 +1,0 @@
-Error because of incorrect assignment for variale storage attributes
-
-array T is shared by every openmp threads so it needs to be under shared clause

@@ -1,1 +1,0 @@
-The error is because the parallel keyword was not included in the openmp pragma

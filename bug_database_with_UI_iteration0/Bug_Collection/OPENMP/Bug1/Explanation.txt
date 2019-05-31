@@ -1,0 +1,6 @@
+The error is because the parallel keyword was not included in the openmp pragma.
+In details, in the buggy version:
+``````````````````````````````
+  #pragma omp for firstprivate(j)
+``````````````````````````````
+The pragma statament is missing the `parallel` keyword.
