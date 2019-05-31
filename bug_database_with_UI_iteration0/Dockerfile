@@ -21,7 +21,7 @@ WORKDIR /IPT/UI
 
 RUN apt-get update && apt install mysql-server default-jre default-jdk ecj python3 python3-pip libcr-dev mpich -y &&\
     pip3 install  mysql-connector && apt-get install xterm -y &&\
-    chmod +x /IPT/UI/setup.sh
+    chmod +x /IPT/UI/setup.sh && chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 
 
 CMD ./setup.sh
