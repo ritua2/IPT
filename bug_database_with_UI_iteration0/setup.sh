@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 
 # Starts MySQL
 /etc/init.d/mysql start
