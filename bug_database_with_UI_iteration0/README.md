@@ -58,6 +58,11 @@ docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=i
 
 ## Installation with Docker (CUDA)
 
+Only available on GNU/Linux.
+
+Prerequisite: Install nvidia-docker on a system with an NVIDIA GPU and CUDA drivers installed. Instructions about the nvidia-docker installation are available [here](https://github.com/nvidia/nvidia-docker/).
+
+
 ```bash
 git clone https://github.com/ritua2/IPT
 cd IPT/bug_database_with_UI_iteration0
@@ -67,18 +72,12 @@ cd IPT/bug_database_with_UI_iteration0
 docker build -t carlosred/ipt_bugs-database:cuda -f Dockerfile.CUDA .
 
 
-# Linux systems
-docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
+nvidia-docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
 
 
 # Note, if using root:
-docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="/root/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
+nvidia-docker run --env="DISPLAY" -e mysql_database=ipt_bugs -e mysql_password="samplepassword"  --net=host --volume="/root/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
 
-
-# Mac systems
-IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-xhost + $IP
-docker run -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix -e mysql_database=ipt_bugs --net=host --volume="$HOME/.Xauthority:/root/.Xauthority:ro" --rm carlosred/ipt_bugs-database:cuda
 ```
 
 
