@@ -34,7 +34,11 @@ int main()
   // Gathering the elements from each process to get the final array
   int rev [10];
   MPI_Gather(&arr[rank*range],range, MPI_INT,rev, range,MPI_INT,0, MPI_COMM_WORLD);
-
+  if (rank == 0) {
+    for (int i = 0; i < 10; i++) {
+      prinf("rev[%d] is %d\n",i,rev[i]);
+    }
+  }
   MPI_Finalize();
   return 0;
 }

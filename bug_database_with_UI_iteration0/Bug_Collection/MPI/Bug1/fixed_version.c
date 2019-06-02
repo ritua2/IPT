@@ -29,6 +29,12 @@ int main()
   MPI_Gatherv(recvbuf,range, MPI_INT,arr,displs,
   recvcounts, MPI_INT, 0,MPI_COMM_WORLD);
   
+  if (rank == 0) {
+    for (int i = 0 ; i < 10 ; i++) {
+      printf("recvbuf [%d] is %d",i,recvbuf[i]);
+    }
+  }
+  
   MPI_Finalize();
   return 0;
 }
