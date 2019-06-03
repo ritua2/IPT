@@ -46,7 +46,7 @@ public class GitFileBowser {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
 				StringBuilder file1 = new StringBuilder("");
 				if (node == null) return;
-				Object nodeInfo = node.getUserObject();
+				//Object nodeInfo = node.getUserObject();
 				//System.out.println(fileRoot.getAbsolutePath().toString());
 				//file1.append(fileRoot.getAbsolutePath().toString().replaceAll("\\\\", "\\\\\\\\").substring(0, fileRoot.getAbsolutePath().toString().lastIndexOf("\\")+3));
 				file1.append(fileRoot.getAbsolutePath().toString().substring(0, fileRoot.getAbsolutePath().toString().lastIndexOf("/")));
@@ -56,14 +56,9 @@ public class GitFileBowser {
 				JLabel jFrame3Label4 = new JLabel("Error, not a directory.");
 				int flag=0;
 				File file=new File(file1.toString());
-				if(!file.isDirectory()) {
-					frame.revalidate();
-					frame.repaint();
-					jFrame3Label4.setBounds(310, 40, 300, 26);
-					frame.getContentPane().add(jFrame3Label4);
-					frame.revalidate();
-					frame.repaint();
-				}else{
+				if(file.isFile())
+					displayfile(frame, tree, file);
+				else if(file.isDirectory()){
 					if(file.listFiles().length>=3){
 						for(File file2: file.listFiles()) {
 							if(!file2.getName().contains(".txt")) {
@@ -152,6 +147,36 @@ public class GitFileBowser {
 		jPanel.add(jPanel3);
 		jPanel.add(jPanel4);
 		jPanel.add(jPanel5);
+		frame.getContentPane().add(jPanel);
+		frame.revalidate();
+		frame.repaint();
+	}
+	
+	public void displayfile(JFrame frame, JTree tree, File file) {
+
+		frame.getContentPane().removeAll();
+		frame.repaint();
+		JPanel jPanel,jPanel2,jPanel3;
+		JScrollPane jScrollPane, jScrollPane2;
+
+		jPanel=new JPanel(new GridLayout(1,4));
+		jScrollPane= new JScrollPane(tree);
+		jScrollPane.setPreferredSize(new Dimension(300, frame.getHeight()));
+		jPanel2= new JPanel();
+		jPanel2.add(jScrollPane);
+		
+		JLabel fileContents = new JLabel(readFile(file));
+		fileContents.setVerticalAlignment(JLabel.TOP);
+		jScrollPane2=new JScrollPane(fileContents);
+		jPanel3=new JPanel();
+		jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
+		jPanel3.add(new JLabel("File Contents"));
+		jPanel3.add(jScrollPane2);
+
+		
+		jPanel.add(jPanel2);
+		jPanel.add(jPanel3);
+		
 		frame.getContentPane().add(jPanel);
 		frame.revalidate();
 		frame.repaint();
