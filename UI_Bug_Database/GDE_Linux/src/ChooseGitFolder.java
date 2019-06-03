@@ -22,7 +22,8 @@ public class ChooseGitFolder {
 		enter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				File file=new File("/");
+				File file=new File("/home/");
+				int flag=0;
 				JFileChooser chooser= new JFileChooser();
 				chooser.setDialogTitle(choosertitle);
 				chooser.setFileHidingEnabled(false);
@@ -31,8 +32,16 @@ public class ChooseGitFolder {
 				int returnVal = chooser.showOpenDialog(chooser);
 	    		if(returnVal == JFileChooser.APPROVE_OPTION) {
 	    			if(chooser.getSelectedFile().exists() && chooser.getSelectedFile().isDirectory()) {
-	    				if(chooser.getSelectedFile().listFiles()[0].getName().equals(".git"))
+	    				for(File file1:chooser.getSelectedFile().listFiles()) {
+	    					if(file1.getName().equals(".git")) {
+	    						flag=1;
+	    						break;
+	    					}
+	    				}
+	    				if(flag==1)
 	    					new GitFileBowser().UI(chooser.getSelectedFile().getPath());
+	    				//if(chooser.getSelectedFile().listFiles()[0].getName().equals(".git"))
+	    					//new GitFileBowser().UI(chooser.getSelectedFile().getPath());
 	    				else {
 	    					frame0.revalidate();
 							frame0.repaint();
