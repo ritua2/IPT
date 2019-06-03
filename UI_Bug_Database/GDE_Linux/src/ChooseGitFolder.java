@@ -22,9 +22,10 @@ public class ChooseGitFolder {
 		enter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				File file=new File("C:\\Users\\krish\\Desktop");
+				File file=new File("/");
 				JFileChooser chooser= new JFileChooser();
 				chooser.setDialogTitle(choosertitle);
+				chooser.setFileHidingEnabled(false);
 			    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			    chooser.setCurrentDirectory(file);
 				int returnVal = chooser.showOpenDialog(chooser);
