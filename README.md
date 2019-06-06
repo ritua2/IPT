@@ -3,8 +3,9 @@
 This repository contains the training and testing material related to IPT, link to the repository for ipt-web code, code for teaching logical errors in paralel programs, and some translator code.
 
 The IPT binary for the Stampede2 system at TACC is available at the following paths:
-https://github.com/ritua2/IPT/tree/master/PEARC18_OMP
-https://github.com/ritua2/IPT/tree/master/PEARC18_MPI
+1) https://github.com/ritua2/IPT/tree/master/PEARC18_OMP
+
+2) https://github.com/ritua2/IPT/tree/master/PEARC18_MPI
 
 The *.zip file named testing_scripts.zip contains 
 1) sample serial programs, 
