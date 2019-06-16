@@ -1,0 +1,18 @@
+	static Queue<Node> queue = new LinkedList<Node>();
+
+    static void levelOrder(Node root){
+        if( root != null ){
+            queue.add(root);
+        }
+        while( !queue.isEmpty() ){
+            Node tree = queue.remove();
+            System.out.print(tree.data + " ");
+            
+            if( tree.left != null ){
+                queue.add( tree.left );
+            }
+            if( tree.right != null ){
+                queue.add( tree.right );
+            }
+        }
+    }

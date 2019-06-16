@@ -1,0 +1,170 @@
+
+AbhishekVermaIIT 3 years ago
+For Python coders, here's how you can code it "pythonic" way:
+
+def levelOrder(self,root):
+    queue = [root] if root else []
+    
+    while queue:
+        node = queue.pop()
+        print(node.data, end=" ")
+        
+        if node.left: queue.insert(0,node.left)
+        if node.right: queue.insert(0,node.right)
+This post is targeted towards aspiring "python programmers".
+
+Code in python usually looks elegant and clear. "High-readability" is one of the reasons behind its growing popularity. Though, at times, you'll find python-version of code looking worse. This mostly happens if the code is written by inexperienced python programmer (usually coming from other languages). For such times, I encourage you to find the "pythonic way" of coding it instead of using "plain translation from other languages". It will surely benefit you in the long run.
+
+Just to give an example, a pythonista would always use while queue: instead of while queue != None :, former being far clear and concise. I hope this post gives some tips regarding "python-way" of coding and encourages you to find better ways to code.
+
+85|Add CommentPermalink
+
+alan_gr993 3 years ago
+This is really elegant! Sorry for nitpicking, but since you're shooting for Pythonic code, stylistically and for convention, don't use whitespace before a colon or before/after an operator to align it with another. (PEP8)
+
+7|Add CommentParentPermalink
+
+AbhishekVermaIIT 3 years ago
+Alan, thanks for the link as well as appreciation. Somehow, I haven't been particular about whitespaces. I feel this is a really good recommendation. I've updated the original post as per your suggestion.
+
+2|Add CommentParentPermalink
+
+mini_weblab 2 years ago
+Thank you for sharing!
+
+1|Add CommentParentPermalink
+
+kirk_s 2 years ago
+The most "pythonic" way would be to use collections.deque.
+
+Deques support thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction.
+
+Though list objects support similar operations, they are optimized for fast fixed-length operations and incur O(n) memory movement costs for pop(0) and insert(0, v) operations which change both the size and position of the underlying data representation.
+
+Next code requires O(n) memory:
+
+    def levelOrder(self,root):
+        q = [ root ]
+        #i = 0
+        
+        #while i < len( q ):
+        #    current = q[i]
+        #    i += 1
+        
+        for current in q:    
+            if current:
+                print(current.data, end=' ')
+
+                q.append(current.left)
+                q.append(current.right) 
+Edit: based on AbhishekVermaIIT's suggestion
+
+6|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+[deleted]
+-1|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+Somehow, you missed the whole point of my post. I checked the editorial, and python code looked miserable to me. A lot of new coders learn from editorial, considering it as guideline. Hence, I suggested better guidelines for their well-being.
+
+Anyway, I saw your original submission here, with the hope that perhaps it justifies your claims. Pardon me, but editorial looks better than that. Yet, the positive part is, that you made it a bit "pythonic" before posting it here. It's good to notice that you made the improvements mentioned in my original post. Let me help you to improve it further.
+
+# Your code has following lines :
+
+i = 0
+        
+while i < len( q ):
+    current = q[i]
+    i += 1
+
+
+# You can replace the above lines by :
+
+for node in q:
+    current = node
+Further, I'll suggest you to go through the link shared by Alan in above post to learn more about "pythonic" way.
+
+
+PS : I didn't use deque because I wanted to "complete the levelOrder function" using basic structures only (without importing anything).
+
+-3|Add CommentParentPermalink
+
+kirk_s 2 years ago
+Dear Abhishek, Please stop reading my mind, you are doing it wrong :)
+
+The using of insert(0,v) makes code about 1000 times slower on my machine, YMMV.
+
+>>> import timeit
+>>> timeit.repeat( 'l.insert(0,1)', 'l = []', number=100000)
+[3.362201734194059, 3.3878507506972255, 3.3838413715304796]
+>>> timeit.repeat( 'l.append(1)', 'l = []', number=100000)
+[0.012857165517289104, 0.01537317457541576, 0.014894512366254276]
+The pythonic way is to use the builtin features (i.e. collections.deque) of the language.
+
+Trying to use a list as a queue in naive manner slows the code about 1000 times.
+
+Thanks for suggestion. Actually for current in q: is enough :)
+
+2|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+Bro, as I said in my previous reply, you missed the whole point of my main post :-)
+
+I was inspired to write this post after seeing lines like if root != None and while len(queue) != 0 in the editorial code. Python allows far more readable code. Thus, I wrote the code, almost same as there (with pop and list), but "python-style". That's why I mentioned "pythonic" and not "most efficient" ! My last suggestion for your code was also on similar note. Thanks for incorporating it.
+
+Now, let me clarify that I agree that usage of deque, or, avoiding pop improves efficiency of that code. I wouldn't have blinked an eye if you mentioned solution to be more "efficient". I have written several posts about improving efficiency, but, I was targetting something else here. I hope this clarifies things. Anyway, thanks for your comment, it will surely add value to the thread :)
+
+0|Add CommentParentPermalink
+
+oz001 2 years ago
+[deleted]
+0|Add CommentParentPermalink
+
+gourde_david 2 years ago
+Makes no sense at all to me to use insert(0,). This is O(n) for EACH insert... You should use deque instead, which is O(1) with it's appendleft. It's not "pytonic" at all to force a list into very slow queue, when python offers a queue by default in collections...
+
+1|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+As I said earlier, this post was inspired by the editorial. I've made least modification to the data structures and algorithm used there, and wrote the "python-style" code for the same implementation.
+
+Also, because problem expects coders to just complete the function levelOrder, I wanted to respect the constraint set by problem-setter and avoided importing anything. Anyway, that's my personal opinion. Obviously, all of us would perhaps use queue in some contest where we are the one designing the complete code.
+
+I won't repeat the same details about the code being pythonic. Please go through my previous post, I've already mentioned what I had to say.
+
+1|Add CommentParentPermalink
+
+cviljoen7 2 years ago
+Hi there, I am just such an aspiring python programmer and I was hoping you could help me understand your code? Sorry if that seems a bit much to ask, I'm just not sure I understand all the bits correctly.
+
+0|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+Hi Charl, please check your inbox. It might need some chit-chat so messaged you there.
+
+1|Add CommentParentPermalink
+
+dabutler 2 years ago
+I'm in the same boat as civljoen.I dont understand the first line. thank you!
+
+0|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+I believe you mean the line : queue = [root] if root else []. It checks if root node is non-empty and then creates list containing the root node only. This single line is equivalent to following non-pythonic code:
+
+if root != None:
+    queue = [root]	# list with single element 'root'
+else:
+    queue = []		# empty list
+3|Add CommentParentPermalink
+
+dabutler 2 years ago
+ok that makes sense we then use this list to add the other nodes found
+
+1|Add CommentParentPermalink
+
+AbhishekVermaIIT 2 years ago
+Correct ... every time we pop-out/print a node, we add its left and right child to the queue.
+
+2|Add CommentParentPermalink
