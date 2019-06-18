@@ -1,0 +1,18 @@
+There are two issues with this code:
+
+1) The FILE variable "f" is not shared - as we have the "default (none)" clause added, we need to explicity declare all errors.
+
+2) There is a "single" directive inside the work-sharing region (parallel for-loop) - this is not allowed by OpenMP. 
+
+
+The error messages that one would see upon running the code with the aforementioned bugs is as follows:
+
+buggy_version.c:15:5: error: ‘f’ not specified in enclosing ‘parallel’
+     fscanf(f,"%d\n",&a[i]);
+     ^~~~~~~~~~~~~~~~~~~~~~
+buggy_version.c:10:9: error: enclosing ‘parallel’
+ #pragma omp parallel default(none) shared(a)
+         ^~~
+buggy_version.c:17:9: error: work-sharing region may not be closely nested inside of work-sharing, ‘critical’, ‘ordered’, ‘master’, explicit ‘task’ or ‘taskloop’ region
+ #pragma omp single
+         ^~~
