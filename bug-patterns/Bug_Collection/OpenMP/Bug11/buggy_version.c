@@ -7,7 +7,7 @@ int main()
   int a[100];
   f = fopen("test.txt","r");
 
-#pragma omp parallel default(none) shared(a, f)
+#pragma omp parallel default(none) shared(a)
 {
 
   #pragma omp for
