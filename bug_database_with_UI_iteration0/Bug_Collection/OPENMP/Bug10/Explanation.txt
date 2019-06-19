@@ -1,5 +1,6 @@
 Using reduction value inside of the reduction for loop.
-In details, in the buggy program:
+
+In detail, in the buggy program, we have:
 
 ``````````````````````````````
 #pragma omp parallel for reduction(+: sum)
