@@ -1,1 +1,17 @@
 TODO: complete this
+
+
+* Error
+
+```
+/tmp/cceqVLNb.o: In function `runloop':
+buggy_version.c:(.text+0x2fb): undefined reference to `ceil'
+/tmp/cceqVLNb.o: In function `affinity':
+buggy_version.c:(.text+0x583): undefined reference to `ceil'
+/tmp/cceqVLNb.o: In function `loop1chunk':
+buggy_version.c:(.text+0x6a4): undefined reference to `cos'
+/tmp/cceqVLNb.o: In function `loop2chunk':
+buggy_version.c:(.text+0x796): undefined reference to `log'
+collect2: error: ld returned 1 exit status
+```
+
