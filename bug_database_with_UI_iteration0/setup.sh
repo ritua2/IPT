@@ -22,7 +22,7 @@ cd .. # get back to the original folder
 
 # Intructions for compilations from source
 
-export CLASSPATH=/IPT/UI/mysql-connector-java-8.0.16.jar:$CLASSPATH
+export CLASSPATH=/IPT/UI/mysql-connector-java-8.0.16.jar:/IPT/UI/json-20180813.jar:$CLASSPATH
 
-javac -cp mysql-connector-java-8.0.16.jar BaseView.java
+javac -cp mysql-connector-java-8.0.16.jar -cp json-20180813.jar BaseView.java
 java BaseView "$mysql_database" root "$mysql_password"
