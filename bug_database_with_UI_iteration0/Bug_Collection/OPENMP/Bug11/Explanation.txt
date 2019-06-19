@@ -1,7 +1,7 @@
 TODO : complete this
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c:6:9: error: expected declaration specifiers before ‘#pragma’

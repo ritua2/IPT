@@ -1,6 +1,6 @@
  freeing the workers communicator before you are done using it.
 
- * Error
+ * Error message
 
  ```
 buggy_version.c(24): warning #266: function "sscanf" declared implicitly

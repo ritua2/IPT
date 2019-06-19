@@ -6,6 +6,6 @@ In the buggy version:
 The loop index is actually not shared, each mpi thread needs to have their own index.
 
 
-* Error
+* Error message
 
 None

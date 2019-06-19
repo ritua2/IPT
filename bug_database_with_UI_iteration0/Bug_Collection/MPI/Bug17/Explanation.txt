@@ -1,4 +1,4 @@
-* Error
+* Error message
 
 ```
 buggy_version.c(21): error: expression must be a modifiable lvalue

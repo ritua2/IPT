@@ -4,6 +4,7 @@ In this case, 2 elements are updated in one iteration except for the last iterat
 
 The buggy version does not handle this case.
 
-* Error
+
+* Error message
 
 None

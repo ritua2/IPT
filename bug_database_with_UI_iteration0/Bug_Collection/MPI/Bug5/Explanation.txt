@@ -5,7 +5,7 @@ The error occurs due to incorrectly handle break statements for the case which p
 The allreduce call requires involment of all processes which due to break and different number of workload, it cause the program to hang.
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c(9): warning #167: argument of type "int" is incompatible with parameter of type "int *"

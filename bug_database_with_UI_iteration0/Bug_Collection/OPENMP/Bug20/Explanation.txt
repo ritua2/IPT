@@ -11,6 +11,6 @@ In details, in the buggy program:
 Since `T` is shared, it need to be either computed using atomic/critical section.
 
 
-* Error
+* Error message
 
 None

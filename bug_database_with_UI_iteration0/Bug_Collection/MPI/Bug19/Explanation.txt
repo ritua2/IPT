@@ -23,7 +23,7 @@ In details, in the buggy version:
 There is no communication between tasks, therefore the other tasks that are supposed to receive data from root are not perform the calculation correctly.
 
 
-* Error
+* Error message
 
 ```
 tasks 1-2: Segmentation fault

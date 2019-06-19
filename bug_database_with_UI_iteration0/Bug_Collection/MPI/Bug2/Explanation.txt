@@ -9,8 +9,6 @@ int sum =1;
 For all processes involved, sum will start at 1. This will cause wrong output for the computation.
 
 
-* Error
+* Error message
 
-```
 None
-```

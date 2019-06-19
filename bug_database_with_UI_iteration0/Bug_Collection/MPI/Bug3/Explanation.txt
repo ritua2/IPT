@@ -5,7 +5,7 @@ The data is computed as odd-first even-second order.
 However, the collective is in contiguous order. Therefore, the collected data will be erroneous 
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c(39): warning #266: function "prinf" declared implicitly

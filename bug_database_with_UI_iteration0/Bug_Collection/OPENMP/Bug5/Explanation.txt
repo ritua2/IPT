@@ -13,7 +13,7 @@ In details, in the buggy file:
 Since the array `T` is updated entirely in each iteration, sharing `T` will cause non-determninistic error.
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c: In function ‘main’:

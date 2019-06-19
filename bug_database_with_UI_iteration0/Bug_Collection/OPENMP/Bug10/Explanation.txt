@@ -13,6 +13,6 @@ In details, in the buggy program:
 Since `sum` is not thread independent, it need to be either computed using atomic/critical section for not under openmp block at all.
 
 
-* Error
+* Error message
 
 None

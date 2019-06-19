@@ -1,7 +1,7 @@
 TODO: Complete this
 
 
-* Error
+* Error message
 
 ```
 Fatal error in PMPI_Waitall: Invalid argument, error stack:

@@ -7,8 +7,6 @@ In details, in the buggy version:
  Therefore, txMatrix[0][0] is not intilized in those node causes the MPI_Scatterv to crash.
 
 
- * Error
+ * Error message
 
- ```
 None
- ```

@@ -17,8 +17,6 @@ So it's up to thhe MPI implementation whether if this program will deadlock or n
 (Stackoverflow explaination)
 
 
-* Error
+* Error message
 
-```
 None
-```

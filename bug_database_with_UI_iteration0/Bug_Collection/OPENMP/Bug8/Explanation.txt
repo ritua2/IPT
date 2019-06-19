@@ -1,7 +1,7 @@
 TODO: NEED MORE THINGS
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c: In function ‘main’:

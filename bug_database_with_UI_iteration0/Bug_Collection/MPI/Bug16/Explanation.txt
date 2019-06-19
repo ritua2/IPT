@@ -5,7 +5,7 @@ These errors are causing an undetermined behavior and a buffer overflow, which e
 (Stackoverflow)
 
 
-* Error
+* Error message
 
 ```
 Assertion failed in file /.../commutil.c at line 1010: MPIU_Object_get_ref((comm_ptr->coll_fns)) >= 0

@@ -1,7 +1,7 @@
 TODO: complete this
 
 
-* Error 
+* Error message
 
 ```
 buggy_version.c: In function ‘main’:

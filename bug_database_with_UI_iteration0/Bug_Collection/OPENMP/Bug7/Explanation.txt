@@ -8,7 +8,7 @@ In details, in the buggy version:
 Since i is initialized outside of the parallel region and used inside, it needs to be under firstprivate clause not just the private clause.
 
 
-* Error
+* Error message
 
 ```
 buggy_version.c: In function ‘main’:

@@ -21,7 +21,7 @@ The tag for Irecv and ISend never match for both tasks. Since the tags don't mat
 (Stackoverflow explaination)
 
 
-* Error
+* Error message
 
 ```
 None

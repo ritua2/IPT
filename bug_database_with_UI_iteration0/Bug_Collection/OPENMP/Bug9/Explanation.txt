@@ -11,7 +11,7 @@ for (int i = 3; i <= static_cast<int>(sqrt(n)); i += 2) {
 This causes crash in the program since openmp does not support this practices.
 
 
-* Error
+* Error message
 
 ```
 buggy_version.cpp: In function ‘bool checkPrime(int)’:

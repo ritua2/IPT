@@ -9,6 +9,6 @@ In details, in the buggy version:
 
 This will cause only the root calling the Bcast and create the deadlock since it (the root) needs to wait for Bcast answer from other node.
 
-* Error
+* Error message
 
 None

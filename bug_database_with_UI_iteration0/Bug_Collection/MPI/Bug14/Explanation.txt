@@ -14,7 +14,7 @@ Node 0 performs both Send to itself without Receive from itself.
 Since the node needs to block for the send call and wait for the receive, this may create deadlock. 
 
 
-* Error
+* Error message
 
 ```
 Fatal error in MPI_Send: Other MPI error, error stack:

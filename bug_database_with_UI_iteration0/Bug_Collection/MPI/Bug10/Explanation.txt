@@ -9,9 +9,9 @@ In details, in the buggy version:
 This will cause the program to crash.
 
 
-* Error
+* Error message
 
 ```
-srun: error: nid00031: tasks 0-3: Segmentation fault
+tasks 0-3: Segmentation fault
 ```
 

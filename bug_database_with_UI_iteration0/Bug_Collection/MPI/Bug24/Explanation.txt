@@ -1,6 +1,6 @@
 TODO: Complete this
 
-* Error
+* Error message
 
 ```
 buggy_version.cpp(4): error #77: this declaration has no storage class or type specifier

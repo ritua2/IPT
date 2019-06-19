@@ -9,6 +9,6 @@ In the buggy version:
 the argument `numprocs` is not wanted here since the field is asking for the number of elements each process would receive.
 
 
-* Error
+* Error message
 
 None

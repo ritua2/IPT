@@ -1,7 +1,7 @@
 TODO: complete this
 
 
-* Error
+* Error message
 
 ```
 Fatal error in MPI_Send: Other MPI error, error stack:

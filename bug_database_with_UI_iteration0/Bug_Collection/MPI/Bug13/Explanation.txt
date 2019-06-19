@@ -50,7 +50,7 @@ So it's up to the MPI implementation whether if this program will deadlock or no
 (Stackoverflow explaination)
 
 
-* Error
+* Error message
 
 ```
 Fatal error in MPI_Send: Other MPI error, error stack:

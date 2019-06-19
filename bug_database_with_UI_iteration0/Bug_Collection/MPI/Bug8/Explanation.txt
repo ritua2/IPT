@@ -14,7 +14,7 @@ Due to `range` is 1 and we compute `2` elements inside the for-loop (shown below
 ``````````````````````````````
 
 
-* Error
+* Error message
 
 None
 
