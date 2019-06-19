@@ -9,3 +9,13 @@ for (int i = 3; i <= static_cast<int>(sqrt(n)); i += 2) {
 ``````````````````````````````
 
 This causes crash in the program since openmp does not support this practices.
+
+
+* Error
+
+```
+buggy_version.cpp: In function ‘bool checkPrime(int)’:
+buggy_version.cpp:8:32: error: invalid exit from OpenMP structured block
+         if (n % i == 0) return false;
+                                ^~~~~
+```

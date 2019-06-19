@@ -11,3 +11,12 @@ In details, in the buggy file:
   }
 ``````````````````````````````
 Since the array `T` is updated entirely in each iteration, sharing `T` will cause non-determninistic error.
+
+
+* Error
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:13:51: error: ‘sum’ appears more than once in data clauses
+ #pragma omp parallel for shared (T,sum) reduction (+ : sum)
+```

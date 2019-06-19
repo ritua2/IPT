@@ -5,3 +5,8 @@ In the buggy vesion:
 ``````````````````````````````
 
 Array `T` is shared by every openmp threads so it needs to be under shared clause.
+
+
+* Error
+
+None
