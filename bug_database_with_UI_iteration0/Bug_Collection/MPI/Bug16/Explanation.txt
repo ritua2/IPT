@@ -3,3 +3,10 @@ MPI_Recv(&b_req,sizeof(b_req),...); is incorrect, the buffer should be b_req (sa
 MPI_Send((double *)execution,(2*sizeof(double), ...); is incorrect too (same issue with MPI_Recv()). The buffer is ok, but the size should be 2 instead of 2*sizeof(double).
 These errors are causing an undetermined behavior and a buffer overflow, which explains why the behavior of the program is non deterministic.
 (Stackoverflow)
+
+
+* Error
+
+```
+Assertion failed in file /.../commutil.c at line 1010: MPIU_Object_get_ref((comm_ptr->coll_fns)) >= 0
+```

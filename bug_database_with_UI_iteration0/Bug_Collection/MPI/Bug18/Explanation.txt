@@ -7,3 +7,11 @@ int range = 100/size;
 ``````````````````````````````
 
 range variable will not be captured correctly in case size is not divisible by 100.
+
+
+* Error
+
+```
+None
+```
+

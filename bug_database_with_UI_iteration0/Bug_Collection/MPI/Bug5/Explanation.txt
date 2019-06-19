@@ -3,3 +3,17 @@ Incorrect handling of break statements in for-loops
 The error occurs due to incorrectly handle break statements for the case which process computes different number of workload.
 
 The allreduce call requires involment of all processes which due to break and different number of workload, it cause the program to hang.
+
+
+* Error
+
+```
+buggy_version.c(9): warning #167: argument of type "int" is incompatible with parameter of type "int *"
+    MPI_Comm_size(MPI_COMM_WORLD,size);
+                                 ^
+
+buggy_version.c(10): warning #167: argument of type "int" is incompatible with parameter of type "int *"
+    MPI_Comm_rank(MPI_COMM_WORLD,rank);
+                                 ^
+tasks 0-3: Segmentation fault
+```

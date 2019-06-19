@@ -48,3 +48,23 @@ Some implementations will return to the caller when the buffer has been sent to 
 Some others will return to the caller when there's a matching MPI_Recv() at the other end. 
 So it's up to the MPI implementation whether if this program will deadlock or not.
 (Stackoverflow explaination)
+
+
+* Error
+
+```
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x604638, count=1, MPI_DOUBLE, dest=1, tag=2, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+aborting job:
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x604638, count=1, MPI_DOUBLE, dest=1, tag=2, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+Rank 0 [Wed Jun 19 11:09:58 2019] [c0-0c0s3n2] Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x604728, count=1, MPI_DOUBLE, dest=0, tag=1, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+aborting job:
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x604728, count=1, MPI_DOUBLE, dest=0, tag=1, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+```

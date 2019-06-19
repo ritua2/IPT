@@ -7,3 +7,9 @@ int range = 10/size;
 ``````````````````````````````
 
 If the value of the "range" variable is not a factor of 10, then there is a possibility of incorrect results.
+
+
+* Error
+
+None
+

@@ -1,0 +1,9 @@
+* Error
+
+```
+buggy_version.c(21): error: expression must be a modifiable lvalue
+          str =  "abcd";        
+          ^
+
+compilation aborted for buggy_version.c (code 2)
+```

@@ -15,3 +15,10 @@ Some implementations will return to the caller when the buffer has been sent to 
 Some others will return to the caller when there's a matching MPI_Recv() at the other end. 
 So it's up to thhe MPI implementation whether if this program will deadlock or not.
 (Stackoverflow explaination)
+
+
+* Error
+
+```
+None
+```
