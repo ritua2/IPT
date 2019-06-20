@@ -1,4 +1,6 @@
-Node 0 performs both Send to itself without Receive from itself.
+Node 0 performs both Send to itself and Receive from itself. 
+This may create deadlock. 
+
 ``````````````````````````````
 	for (i = 0; i < numprocs; i++) //masternode distributes matrix A to every single core
 	{   
@@ -12,3 +14,16 @@ Node 0 performs both Send to itself without Receive from itself.
 	}
 ``````````````````````````````
 Since the node needs to block for the send call and wait for the receive, this may create deadlock. 
+
+
+* Error message
+
+```
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x62d530, count=3, MPI_INT, dest=0, tag=0, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+aborting job:
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x62d530, count=3, MPI_INT, dest=0, tag=0, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+```

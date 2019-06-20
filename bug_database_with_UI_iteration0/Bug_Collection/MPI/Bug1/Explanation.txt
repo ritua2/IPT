@@ -1,4 +1,4 @@
-The error occurs due to improper distribution of work amongst the MPI processes.
+The error occurs due to incorrect balancing the workload.
 
 In the buggy version:
 
@@ -6,4 +6,10 @@ In the buggy version:
 int range = 10/size;
 ``````````````````````````````
 
-If the value of the "range" variable is not a factor of 10, then there is a possibility of incorrect results.
+range variable will not be captured correctly in case size is not divisible by 10.
+
+
+* Error message
+
+None
+

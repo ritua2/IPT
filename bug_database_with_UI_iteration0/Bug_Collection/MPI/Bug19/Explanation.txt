@@ -21,3 +21,12 @@ In details, in the buggy version:
    }
 ``````````````````````````````
 There is no communication between tasks, therefore the other tasks that are supposed to receive data from root are not perform the calculation correctly.
+
+
+* Error message
+
+```
+tasks 1-2: Segmentation fault
+task 3: Bus error
+task 0: Terminated
+```

@@ -11,7 +11,7 @@ int main()
   int arr [12];
 
   // initializing array "arr" at rank 0
-  if (rank = 0) {
+  if (rank == 0) {
     for (int i =0; i < 12; i++) {
       arr[i] = i;
     }
@@ -37,26 +37,26 @@ int main()
     // The formula for "displacement" and "count" is similar to 
     // computing start and end (i.e each process has the same 
     // number of elements, only the last process may have extra ones)
-    displacement[i] = rank*(12/size);
+    displacements[i] = i*(12/size);
     if (i < size - 1) {
       count[i] = 12/size;
     }
     else {
-      count[i] = 12 - rank*(12/size);
+      count[i] = 12 - i*(12/size);
     }
   }
 
   // Scatter portion of the array to other MPI processes
   int recvbuf[count[rank]];
-  MPI_Scatterv(arr,count,displacement, MPI_INT, recvbuf,count[rank],MPI_INT,0, MPI_COMM_WORLD);
+  MPI_Scatterv(arr,count,displacements, MPI_INT, recvbuf,count[rank],MPI_INT,0, MPI_COMM_WORLD);
 
-  // increase the element value by one ( 2 at a time)
+  // increase the element value by one
   for (int i = start ; i < range ; i++) {
     recvbuf[i] += 1;
   }
 
   // Gathering the elements from each process to get the final array 
-  MPI_Gatherv(recvbuf,range, MPI_INT,arr, count,displacement,MPI_INT,0, MPI_COMM_WORLD);
+  MPI_Gatherv(recvbuf,range, MPI_INT,arr, count,displacements,MPI_INT,0, MPI_COMM_WORLD);
   MPI_Finalize();
   return 0;
 }

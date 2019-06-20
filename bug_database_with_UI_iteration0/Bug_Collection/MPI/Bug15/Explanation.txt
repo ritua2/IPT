@@ -19,3 +19,12 @@ In details, in the buggy version:
 ``````````````````````````````
 The tag for Irecv and ISend never match for both tasks. Since the tags don't match, they keep waiting and create deadlock.
 (Stackoverflow explaination)
+
+
+* Error message
+
+```
+None
+```
+
+Infinite wait

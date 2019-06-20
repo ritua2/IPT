@@ -7,3 +7,9 @@ int range = 10/size;
 ``````````````````````````````
 
 range variable will not be captured correctly in case size is not divisible by 10.
+
+
+* Error message
+
+None
+

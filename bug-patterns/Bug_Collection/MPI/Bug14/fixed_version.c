@@ -1,6 +1,6 @@
 #include <mpi.h>
-
-
+#include <stdio.h>
+#include <stdlib.h>
 int main(int argc, char** argv) {
   MPI_Init(&argc, &argv);
   int numprocs,myid;
@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
 
       for (i = 1; i < numprocs; i++) //masternode distributes matrix A to every single core
       {   
-        MA = (double*)malloc(ASpalten*AZeile*sizeof(double));
-        for (int i = 0; i < ASpalten*AZeil; i++)
+        MA = (double*)malloc(ASpalten*AZeilen*sizeof(double));
+        for (int i = 0; i < ASpalten*AZeilen; i++)
           MA[i] = 1;
         MB = (double*)malloc(ASpalten*BSpalten*sizeof(double));
         for (int i = 0; i < ASpalten*BSpalten; i++)

@@ -1,3 +1,12 @@
 Dangerous practice with initializing array used in MPI call.
+In details, in the buggy version:
+``````````````````````````````
+ MPI_Scatterv(&txMatrix[0][0], sendcMat, displMat, MPI_INT, &rxMatrix[0][0], sendcMat[rank], MPI_INT, 0, MPI_COMM_WORLD);
+ ``````````````````````````````
+ For other node other than 0, `txMatrix[0][0]`is not previously intinilized. 
+ Therefore, txMatrix[0][0] is not intilized in those node causes the MPI_Scatterv to crash.
 
-TODO: more explanation needed
+
+ * Error message
+
+None

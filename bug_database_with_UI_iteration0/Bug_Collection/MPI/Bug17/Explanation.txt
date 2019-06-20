@@ -1,0 +1,16 @@
+There are two kind of errors in the program
+MPI_Recv(&b_req,sizeof(b_req),...); is incorrect, the buffer should be b_req (same issue with the MPI_Send()). Also, though sizeof(b_req) is correct here, it is misleading and  can br hardcoded to 1 instead.
+MPI_Send((double *)execution,(2*sizeof(double), ...); is incorrect too (same issue with MPI_Recv()). The buffer is ok, but the size should be 2 instead of 2*sizeof(double).
+These errors are causing an undetermined behavior and a buffer overflow, which explains why the behavior of the program is non deterministic.
+(Stackoverflow)
+
+
+* Error message
+
+```
+buggy_version.c(21): error: expression must be a modifiable lvalue
+          str =  "abcd";        
+          ^
+
+compilation aborted for buggy_version.c (code 2)
+```

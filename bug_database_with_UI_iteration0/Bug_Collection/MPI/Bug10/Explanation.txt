@@ -7,3 +7,11 @@ In details, in the buggy version:
 ``````````````````````````````
 
 This will cause the program to crash.
+
+
+* Error message
+
+```
+tasks 0-3: Segmentation fault
+```
+

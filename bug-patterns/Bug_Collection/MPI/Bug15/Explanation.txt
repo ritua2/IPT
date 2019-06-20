@@ -1,2 +1,30 @@
-Tag does not match.c
+The tags do not match.
+In details, in the buggy version:
+``````````````````````````````
+    if(rank>0)
+    {
+        MPI_Irecv(rbuff1,10,MPI_INT,rank-1,0,MPI_COMM_WORLD,&reqs[count]);
+        count++;
+        MPI_Isend(sbuff1,10,MPI_INT,rank-1,1,MPI_COMM_WORLD,&reqs[count]);
+        count++;
+    }
+
+    if(rank<comm_size-1)
+    {
+        MPI_Irecv(rbuff2,10,MPI_INT,rank+1,2,MPI_COMM_WORLD,&reqs[count]);
+        count++;
+        MPI_Isend(sbuff2,10,MPI_INT,rank+1,3,MPI_COMM_WORLD,&reqs[count]);
+        count++;
+    }
+``````````````````````````````
+The tag for Irecv and ISend never match for both tasks. Since the tags don't match, they keep waiting and create deadlock.
 (Stackoverflow explaination)
+
+
+* Error message
+
+```
+None
+```
+
+Infinite wait

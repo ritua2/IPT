@@ -5,3 +5,8 @@ In details, in the buggy version:
  ``````````````````````````````
  For other node other than 0, `txMatrix[0][0]`is not previously intinilized. 
  Therefore, txMatrix[0][0] is not intilized in those node causes the MPI_Scatterv to crash.
+
+
+ * Error message
+
+None

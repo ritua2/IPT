@@ -24,11 +24,14 @@ int main(int argc, char** argv){
        for(int n=0; n<IN; n++){   //predecided map values
            toMap[n] = rand()%IN;
            mapper[n] = rand()%101;
-           printf("[%d, %d]", n, mapper[n]);
        }
        printf("\n");
    }
-   
+   if(id == 0){
+       for(int n=0; n<IN; n++){   //map results
+           printf("[%d -> %d]\n", toMap[n], mapper[n]);
+       }
+   }
    int d = IN/p;
    int i = id*d;
    while(i<id*d+d && i<IN){
@@ -36,7 +39,7 @@ int main(int argc, char** argv){
         i++;
    }
    MPI_Barrier(MPI_COMM_WORLD);
-   if(id == 0){
+   if(id == 1){
        for(int n=0; n<IN; n++){   //map results
            printf("[%d -> %d]\n", toMap[n], result[n]);
        }
