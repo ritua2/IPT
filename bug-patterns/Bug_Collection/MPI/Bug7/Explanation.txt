@@ -1,1 +1,39 @@
  freeing the workers communicator before you are done using it.
+
+ * Error message
+
+ ```
+buggy_version.c(24): warning #266: function "sscanf" declared implicitly
+      if(myid==0) sscanf(argv[1], "%lf", &epsilon);
+                  ^
+
+buggy_version.c(33): warning #266: function "time" declared implicitly
+          srand(time(NULL));
+                ^
+
+buggy_version.c(42): error: identifier "INT_MAX" is undefined
+                      if(rands[i]<=INT_MAX) ++i;
+                                   ^
+
+buggy_version.c(53): error: identifier "INT_MAX" is undefined
+          max = INT_MAX; /* max int, for normalization */
+                ^
+
+buggy_version.c(76): warning #266: function "fabs" declared implicitly
+              error = fabs( Pi-3.141592653589793238462643);
+                      ^
+
+buggy_version.c(81): warning #266: function "printf" declared implicitly
+                  printf("\rpi = %23.20f", Pi);
+                  ^
+
+buggy_version.c(94): warning #266: function "printf" declared implicitly
+          printf("\npoints: %d\nin: %d, out: %d, <ret> to exit\n", totalin+totalout, totalin, totalout);
+          ^
+
+buggy_version.c(95): warning #266: function "getchar" declared implicitly
+          getchar();
+          ^
+
+compilation aborted for buggy_version.c (code 2)
+ ```

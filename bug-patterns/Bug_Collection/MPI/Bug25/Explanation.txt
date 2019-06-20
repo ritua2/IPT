@@ -1,0 +1,48 @@
+TODO: complete this
+
+
+* Error message
+
+```
+buggy_version.cpp(4): error: identifier "malloc" is undefined
+    double* result = (double*)malloc(sizeof(double)*length);
+                              ^
+
+buggy_version.cpp(6): error: identifier "NULL" is undefined
+    error = MPI_Init(NULL,NULL);
+                     ^
+
+buggy_version.cpp(6): error: identifier "MPI_Init" is undefined
+    error = MPI_Init(NULL,NULL);
+            ^
+
+buggy_version.cpp(7): error: identifier "MPI_COMM_WORLD" is undefined
+    error = MPI_Comm_size(MPI_COMM_WORLD,&size);
+                          ^
+
+buggy_version.cpp(7): error: identifier "MPI_Comm_size" is undefined
+    error = MPI_Comm_size(MPI_COMM_WORLD,&size);
+            ^
+
+buggy_version.cpp(8): error: identifier "MPI_Comm_rank" is undefined
+    error = MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+            ^
+
+buggy_version.cpp(16): error: identifier "MPI_DOUBLE" is undefined
+    error = MPI_Scatter(a, sublist_length, MPI_DOUBLE, sub_a, sublist_length, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+                                           ^
+
+buggy_version.cpp(16): error: identifier "MPI_Scatter" is undefined
+    error = MPI_Scatter(a, sublist_length, MPI_DOUBLE, sub_a, sublist_length, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+            ^
+
+buggy_version.cpp(25): error: identifier "MPI_Gather" is undefined
+    error = MPI_Gather(buffer,sublist_length,MPI_DOUBLE,result,length,MPI_DOUBLE,0,MPI_COMM_WORLD);
+            ^
+
+buggy_version.cpp(27): error: identifier "MPI_Finalize" is undefined
+    error = MPI_Finalize();
+            ^
+
+compilation aborted for buggy_version.cpp (code 2)
+```

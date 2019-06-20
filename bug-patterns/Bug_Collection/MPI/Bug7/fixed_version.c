@@ -1,5 +1,4 @@
 #include <mpi.h>
-#include <mpe.h>
 #include <stdlib.h>
 
 #define CHUNKSIZE 1000

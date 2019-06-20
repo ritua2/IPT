@@ -1,1 +1,15 @@
-Incorrect usage of Bcast, it needs to be call from all nodes.
+TODO: complete this
+
+
+* Error message
+
+```
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x7ffffb3ae200, count=4000000, MPI_FLOAT, dest=0, tag=0, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+aborting job:
+Fatal error in MPI_Send: Other MPI error, error stack:
+MPI_Send(186): MPI_Send(buf=0x7ffffb3ae200, count=4000000, MPI_FLOAT, dest=0, tag=0, MPI_COMM_WORLD) failed
+MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
+```
+

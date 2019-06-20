@@ -1,1 +1,32 @@
 Missing Bcast to distributed the array.
+In details, in the buggy version:
+``````````````````````````````
+   if(id==0){
+       for(int n=0; n<IN; n++){   //predecided map values
+           toMap[n] = rand()%IN;
+           mapper[n] = rand()%101;
+       }
+       printf("\n");
+   }
+   if(id == 0){
+       for(int n=0; n<IN; n++){   //map results
+           printf("[%d -> %d]\n", toMap[n], mapper[n]);
+       }
+   }
+   int d = IN/p;
+   int i = id*d;
+   while(i<id*d+d && i<IN){
+        result[i] = mapper[toMap[i]];
+        i++;
+   }
+``````````````````````````````
+There is no communication between tasks, therefore the other tasks that are supposed to receive data from root are not perform the calculation correctly.
+
+
+* Error message
+
+```
+tasks 1-2: Segmentation fault
+task 3: Bus error
+task 0: Terminated
+```

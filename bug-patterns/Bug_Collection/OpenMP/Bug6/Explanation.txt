@@ -1,3 +1,0 @@
-Error due to not using critical section
-
-Since the update of T is related to each other, T needs to be shared.

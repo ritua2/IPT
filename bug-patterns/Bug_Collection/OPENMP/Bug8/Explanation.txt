@@ -1,0 +1,42 @@
+TODO: NEED MORE THINGS
+
+
+* Error message
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:7:35: error: ‘d’ undeclared (first use in this function)
+  #pragma omp parallel for private(d)
+                                   ^
+buggy_version.c:7:35: note: each undeclared identifier is reported only once for each function it appears in
+buggy_version.c:8:3: error: for statement expected before ‘{’ token
+   {
+   ^
+buggy_version.c:9:21: error: ‘nt1’ undeclared (first use in this function)
+   for ( i = 0 ; i < nt1 ; i++ ) {
+                     ^~~
+buggy_version.c:10:9: warning: implicit declaration of function ‘distancia’ [-Wimplicit-function-declaration]
+     d = distancia(tabla1[i],tabla2[j]);
+         ^~~~~~~~~
+buggy_version.c:10:19: error: ‘tabla1’ undeclared (first use in this function)
+     d = distancia(tabla1[i],tabla2[j]);
+                   ^~~~~~
+buggy_version.c:10:29: error: ‘tabla2’ undeclared (first use in this function); did you mean ‘tabla1’?
+     d = distancia(tabla1[i],tabla2[j]);
+                             ^~~~~~
+                             tabla1
+buggy_version.c:10:36: error: ‘j’ undeclared (first use in this function)
+     d = distancia(tabla1[i],tabla2[j]);
+                                    ^
+buggy_version.c:11:14: error: ‘dm’ undeclared (first use in this function); did you mean ‘d’?
+     if ( d < dm ) {
+              ^~
+              d
+buggy_version.c:15:9: error: ‘im’ undeclared (first use in this function); did you mean ‘dm’?
+         im = i;
+         ^~
+         dm
+buggy_version.c:20:2: error: ‘ps’ undeclared (first use in this function)
+  ps[j] = im;
+  ^~
+```

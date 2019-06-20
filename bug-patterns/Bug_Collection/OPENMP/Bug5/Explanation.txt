@@ -1,0 +1,22 @@
+Error because of incorrect assignment for variale storage attributes.
+In details, in the buggy file:
+``````````````````````````````
+#pragma omp parallel for shared (T,sum) reduction (+ : sum)
+
+  for ( int i = 0; i < 10; i ++) {
+    for (int j =0; j < 5; j++) {
+      T[j]  = i ;
+    }
+   	...
+  }
+``````````````````````````````
+Since the array `T` is updated entirely in each iteration, sharing `T` will cause non-determninistic error.
+
+
+* Error message
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:13:51: error: ‘sum’ appears more than once in data clauses
+ #pragma omp parallel for shared (T,sum) reduction (+ : sum)
+```

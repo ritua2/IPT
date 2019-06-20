@@ -1,1 +1,17 @@
-MPI_Type_get_extent arguments cannot be NULL
+MPI_Type_get_extent arguments cannot be NULL.
+
+In details, in the buggy version:
+
+``````````````````````````````
+   MPI_Type_get_extent(MPI_A, NULL, &extent);
+``````````````````````````````
+
+This will cause the program to crash.
+
+
+* Error message
+
+```
+tasks 0-3: Segmentation fault
+```
+

@@ -1,1 +1,20 @@
 Error occurs due to integer calculation.
+In details, in the buggy version: 
+``````````````````````````````
+  int range = (6/size);
+``````````````````````````````
+Since we are running with `size = 4`, `range` now is 1 (due to integer calculation). 
+However, because of `arr` has 12 elements, Scatterv assigns that each task to contain 3 elements. 
+Due to `range` is 1 and we compute `2` elements inside the for-loop (shown below), each task only computes 2 elements.
+``````````````````````````````
+  for (int i = start ; i < range ; i++) {
+    recvbuf[i] += 1;
+    recvbuf[i+1] += 1;
+  }  
+``````````````````````````````
+
+
+* Error message
+
+None
+

@@ -1,0 +1,17 @@
+The error is because the parallel keyword was not included in the openmp pragma.
+In details, in the buggy version:
+``````````````````````````````
+  #pragma omp for firstprivate(j)
+``````````````````````````````
+The pragma statament is missing the `parallel` keyword.
+
+
+
+* Error message
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:6:13: error: firstprivate variable ‘j’ is private in outer context
+     #pragma omp for firstprivate(j)
+             ^~~
+```

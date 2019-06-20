@@ -1,0 +1,21 @@
+Error is caused by breaking out of the openmp for loop with a return calls.
+In details, in the buggy version:
+
+``````````````````````````````
+#pragma omp parallel for
+for (int i = 3; i <= static_cast<int>(sqrt(n)); i += 2) {
+    if (n % i == 0) return false;
+}
+``````````````````````````````
+
+This causes crash in the program since openmp does not support this practices.
+
+
+* Error message
+
+```
+buggy_version.cpp: In function ‘bool checkPrime(int)’:
+buggy_version.cpp:8:32: error: invalid exit from OpenMP structured block
+         if (n % i == 0) return false;
+                                ^~~~~
+```

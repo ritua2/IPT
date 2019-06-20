@@ -1,0 +1,26 @@
+TODO: complete this
+
+
+* Error message
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:3:5: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+     printf("Usage: %s matrix/vector_size\n", argv[0]);
+     ^~~~~~
+buggy_version.c:3:5: warning: incompatible implicit declaration of built-in function ‘printf’
+buggy_version.c:3:5: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+buggy_version.c:7:14: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+   int size = atoi(argv[1]);
+              ^~~~
+buggy_version.c:8:33: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   double **matrix2 = (double **)malloc(sizeof(double*)*size);
+                                 ^~~~~~
+buggy_version.c:8:33: warning: incompatible implicit declaration of built-in function ‘malloc’
+buggy_version.c:8:33: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+buggy_version.c:19:3: warning: implicit declaration of function ‘matrix_vector_gen’ [-Wimplicit-function-declaration]
+   matrix_vector_gen(size, matrix, matrix2);
+   ^~~~~~~~~~~~~~~~~
+buggy_version.c:19:3: error: expected declaration or statement at end of input
+
+```

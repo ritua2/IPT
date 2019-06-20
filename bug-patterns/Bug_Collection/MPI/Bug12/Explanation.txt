@@ -1,2 +1,22 @@
-MPI_Send may or may not block. It will block until the sender can reuse the sender buffer. Some implementations will return to the caller when the buffer has been sent to a lower communication layer. Some others will return to the caller when there's a matching MPI_Recv() at the other end. So it's up to thhe MPI implementation whether if this program will deadlock or not.
+MPI_Send may or may not block.
+In details, in the buggy version:
+
+``````````````````````````````
+  if (my_rank == 0) {
+     MPI_Send (sendbuf, count, MPI_INT, 1, tag, MPI_COMM_WORLD);
+     MPI_Recv (recvbuf, count, MPI_INT, 1, tag, MPI_COMM_WORLD, &status);
+  } else if (my_rank == 1) {
+     MPI_Send (sendbuf, count, MPI_INT, 0, tag, MPI_COMM_WORLD);
+     MPI_Recv (recvbuf, count, MPI_INT, 0, tag, MPI_COMM_WORLD, &status);
+  }
+``````````````````````````````
+This will block until the sender can reuse the sender buffer.
+Some implementations will return to the caller when the buffer has been sent to a lower communication layer. 
+Some others will return to the caller when there's a matching MPI_Recv() at the other end. 
+So it's up to thhe MPI implementation whether if this program will deadlock or not.
 (Stackoverflow explaination)
+
+
+* Error message
+
+None

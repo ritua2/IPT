@@ -1,0 +1,18 @@
+Incorrect specification of storage attributes for the variables used in both serial and parallel regions
+In details, in the buggy version:
+
+``````````````````````````````
+  #pragma omp parallel for private(i) reduction( + : sum )
+``````````````````````````````
+
+Since i is initialized outside of the parallel region and used inside, it needs to be under firstprivate clause not just the private clause.
+
+
+* Error message
+
+```
+buggy_version.c: In function ‘main’:
+buggy_version.c:8:11: error: initializer expression refers to iteration variable ‘i’
+   #pragma omp parallel for private(i) reduction( + : sum )
+           ^~~
+```

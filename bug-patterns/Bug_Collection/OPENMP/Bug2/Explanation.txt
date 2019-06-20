@@ -1,0 +1,12 @@
+Error because of incorrect assignment for variale storage attributes.
+In the buggy vesion:
+``````````````````````````````
+#pragma omp parallel for private(T) 
+``````````````````````````````
+
+Array `T` is shared by every openmp threads so it needs to be under shared clause.
+
+
+* Error message
+
+None

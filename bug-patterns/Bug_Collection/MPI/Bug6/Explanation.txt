@@ -1,1 +1,14 @@
-Error due to incorrect arugment value for Allgather
+Error due to incorrect argument value for Allgather
+
+In the buggy version:
+
+``````````````````````````````
+ MPI_Allgather(&c, 1, MPI_LONG, &oldcount, numprocs, MPI_LONG, MPI_COMM_WORLD);
+``````````````````````````````
+
+the argument `numprocs` is not wanted here since the field is asking for the number of elements each process would receive.
+
+
+* Error message
+
+None

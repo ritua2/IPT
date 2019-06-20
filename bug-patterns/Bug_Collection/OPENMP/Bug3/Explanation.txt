@@ -1,0 +1,11 @@
+Error because of incorrect assignment for variale storage attributes
+In the buggy version:
+``````````````````````````````
+#pragma omp parallel for shared (i) reduction (+: sum)
+``````````````````````````````
+The loop index is actually not shared, each mpi thread needs to have their own index.
+
+
+* Error message
+
+None

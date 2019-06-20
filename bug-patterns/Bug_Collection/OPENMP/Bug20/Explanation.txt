@@ -1,0 +1,16 @@
+Computing shared value without atomic computation.
+In details, in the buggy program:
+
+``````````````````````````````
+#pragma omp parallel for reduction(+: sum)
+    for (int j =0; j < 10; j++) {
+      T[j] +=sum;
+    }
+``````````````````````````````
+
+Since `T` is shared, it need to be either computed using atomic/critical section.
+
+
+* Error message
+
+None
