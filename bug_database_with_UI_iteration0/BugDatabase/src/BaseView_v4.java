@@ -30,8 +30,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
+
 
 import java.util.*;
 
@@ -132,7 +134,7 @@ public class BaseView_v4 {
 		textField.addActionListener(new ActionListener(){
 			
 			ArrayList<DefaultMutableTreeNode> nodes=new ArrayList<DefaultMutableTreeNode>();
-			Enumeration<DefaultMutableTreeNode> en = null;
+			Enumeration<TreeNode> en = null;
 			String element=null;
 
 			public void actionPerformed(ActionEvent e){
@@ -452,9 +454,9 @@ public class BaseView_v4 {
 	    return leafs;
 	}
 	private static void _getLeafNodes(DefaultMutableTreeNode parent, ArrayList<DefaultMutableTreeNode> leafs) {
-	    Enumeration<DefaultMutableTreeNode> children = parent.children();
+	    Enumeration<TreeNode> children = parent.children();
 	    while (children.hasMoreElements()) {
-	        DefaultMutableTreeNode node = children.nextElement();
+	        DefaultMutableTreeNode node = (DefaultMutableTreeNode)children.nextElement();
 	        if (!node.isLeaf()) {
 	            leafs.add(node);
 	            _getLeafNodes(node, leafs);
