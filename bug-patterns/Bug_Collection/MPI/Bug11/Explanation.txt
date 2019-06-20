@@ -1,4 +1,4 @@
-TODO: complete this
+Incorrect usage of Bcast, it needs to be call from all nodes.
 
 
 * Error message

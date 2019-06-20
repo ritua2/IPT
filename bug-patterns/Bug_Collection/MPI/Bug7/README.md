@@ -1,11 +1,11 @@
 ### Instructions
 
 Requirements:
-1. Intel compiler
+1. Intel compiler and an MPI implementation, Intel MPI is valid
 
 or
 
-2. gcc and an MPI implementation (MPI, OpenMPI)
+2. gcc and an MPI implementation (mpich, OpenMPI)
 
 
 #### Compile:

@@ -1,5 +1,6 @@
-MPI_Send may or may not block. 
-It will block until the sender can reuse the sender buffer.
+MPI_Send may or may not block. It will block until the sender can reuse the sender buffer. Some implementations will return to the caller when the buffer has been sent to a lower communication layer. Some others will return to the caller when there's a matching MPI_Recv() at the other end. So it's up to thhe MPI implementation whether if this program will deadlock or not.
+(Stackoverflow explaination)
+
 In details, in the buggy version:
 ``````````````````````````````
 	if(process_id==0)
@@ -44,10 +45,6 @@ In details, in the buggy version:
     }
 
 ``````````````````````````````
-Some implementations will return to the caller when the buffer has been sent to a lower communication layer. 
-Some others will return to the caller when there's a matching MPI_Recv() at the other end. 
-So it's up to the MPI implementation whether if this program will deadlock or not.
-(Stackoverflow explaination)
 
 
 * Error message

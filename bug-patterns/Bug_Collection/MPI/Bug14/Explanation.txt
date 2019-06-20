@@ -1,4 +1,6 @@
-Node 0 performs both Send to itself without Receive from itself.
+Node 0 performs both Send to itself and Receive from itself. 
+This may create deadlock. 
+
 ``````````````````````````````
 	for (i = 0; i < numprocs; i++) //masternode distributes matrix A to every single core
 	{   
