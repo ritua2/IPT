@@ -197,7 +197,14 @@ public class BaseView_v4 {
 			}
 		});
 		jTree.setCellRenderer(renderer);
-		frame.setVisible(true);	   
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent e) {
+		        System.exit(0);
+		    }
+		});		
 	}
 	
 	static ResultSet fetchDB(String query) {
