@@ -125,6 +125,7 @@ public class BaseView_v4 {
 		jPanel1.add(jsp);
 		
 		textField.setText("Search bug category, press Enter");
+		textField.setFont(new Font("Arial",Font.CENTER_BASELINE,(int) width/120));
 		textField.addMouseListener(new MouseAdapter() {
 		
 			@Override
@@ -143,7 +144,6 @@ public class BaseView_v4 {
 			}
 		});
 		
-		textField.setFont(new Font("Courier", Font.PLAIN, 10));
 		textField.addActionListener(new ActionListener(){
 			
 			ArrayList<DefaultMutableTreeNode> nodes=new ArrayList<DefaultMutableTreeNode>();
@@ -385,7 +385,7 @@ public class BaseView_v4 {
 	    JTextArea tareaBuggy = new JTextArea(20, 40);
 		
 	    // Get a explanation file
-	    JTextArea tareaReadMe = new JTextArea(5,30);
+	    JTextArea tareaReadMe = new JTextArea(5,50);
 		
 	    JScrollPane topleft = null;
 	    JScrollPane topright = null; 
@@ -467,6 +467,7 @@ public class BaseView_v4 {
 	    _getLeafNodes(root, leafs);
 	    return leafs;
 	}
+	
 	private static void _getLeafNodes(DefaultMutableTreeNode parent, ArrayList<DefaultMutableTreeNode> leafs) {
 	    Enumeration<TreeNode> children = parent.children();
 	    while (children.hasMoreElements()) {

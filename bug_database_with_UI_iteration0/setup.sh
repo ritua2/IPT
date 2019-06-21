@@ -19,10 +19,9 @@ cd .. # get back to the original folder
 # To use the pre-compiled jar file
 #java -jar BugDatabase.jar "$mysql_database" root "$mysql_password"
 
-
 # Intructions for compilations from source
 
 export CLASSPATH=/IPT/UI/mysql-connector-java-8.0.16.jar:/IPT/UI/json-20180813.jar:$CLASSPATH
 
-javac -cp mysql-connector-java-8.0.16.jar -cp json-20180813.jar BaseView.java
-java BaseView "$mysql_database" root "$mysql_password"
+javac -cp mysql-connector-java-8.0.16.jar -cp json-20180813.jar BaseView_v4.java HighlightTreeCellRenderer.java
+java BaseView_v4 "$mysql_database" root "$mysql_password"
