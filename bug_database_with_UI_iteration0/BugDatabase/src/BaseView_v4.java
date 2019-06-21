@@ -1,7 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -34,13 +34,14 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-
 import java.util.*;
 
 public class BaseView_v4 {
 
 	private JFrame frame;
 	static JTextField textField = new JTextField(30);
+	static JPanel jPanel3=new JPanel();
+	static JScrollPane jSPane = null;
 	static final HighlightTreeCellRenderer renderer = new HighlightTreeCellRenderer();
 	
 	static double width;
@@ -69,6 +70,7 @@ public class BaseView_v4 {
 		JPanel jPanel1=new JPanel();
 		//Holds file display
 		JPanel jPanel2=new JPanel();
+		
 		JScrollPane jsp = null;
 		
 		// Making root tree for repositories
@@ -76,6 +78,7 @@ public class BaseView_v4 {
         DefaultMutableTreeNode dmtn_pm = null;
         DefaultMutableTreeNode dmtn_tag = null;
         DefaultMutableTreeNode dmtn_label = null;
+        ArrayList<DefaultMutableTreeNode> expanded_nodes= new ArrayList<DefaultMutableTreeNode>();
         
         // Making list of programming model
         String[] programmingModels = {"MPI","OPENMP","CUDA"};
@@ -127,7 +130,17 @@ public class BaseView_v4 {
 			@Override
 		    public void mouseClicked(MouseEvent e) {
 				textField.setText("");
-		    }
+				//jPanel1.remove(comp);
+				for(DefaultMutableTreeNode node:expanded_nodes) {
+					DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode)node.getParent();
+					jTree.collapsePath(new TreePath(node.getPath()));
+					jTree.collapsePath(new TreePath(parentNode.getPath()));
+				}
+				if (jSPane!=null) {
+					jPanel1.remove(jSPane);
+					jPanel1.repaint();
+				}
+			}
 		});
 		
 		textField.setFont(new Font("Courier", Font.PLAIN, 10));
@@ -138,7 +151,7 @@ public class BaseView_v4 {
 			String element=null;
 
 			public void actionPerformed(ActionEvent e){
-
+				
 				nodes=getLeafNodes(root);
                 bugList = getSearchTags(textField.getText(),  database,  host, passwd);
                 
@@ -147,14 +160,22 @@ public class BaseView_v4 {
                 		en=node.preorderEnumeration();
                     	while (en.hasMoreElements()) {
                     		element=en.nextElement().toString();
-                    			if(element.equals(str))
+                    			if(element.equals(str)) {
                     				jTree.expandPath(new TreePath(node.getPath()));
+                    				expanded_nodes.add(node);
+                    			}
                     	}
                     }
 				}
                 
-                modifyFrame2(jPanel1, textField, jPanel2, frame, jTree, database, host, passwd); 
-			}
+                jPanel3=getsearchPanel(textField.getText(), database, host, passwd, jTree);
+                jSPane=new JScrollPane(jPanel3);
+                jSPane.setPreferredSize(new Dimension(300, 300));
+                jPanel1.add(jSPane);
+        		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        	    jPanel1.repaint();
+        	    jPanel1.revalidate();
+            }
 		});
 			
 		jPanel1.add(textField);
@@ -257,6 +278,7 @@ public class BaseView_v4 {
 		ArrayList<String> nameList= new ArrayList<String>();
 		
 		JPanel jPanel = new JPanel();
+		GridLayout layout = new GridLayout(0,3);
 		
 		try{  	
 			query = "select ID from bugCatagories where name = \""+string+"\"";
@@ -286,12 +308,15 @@ public class BaseView_v4 {
 		} catch(Exception e){ 
 			System.out.println(e);
 		}  
-				
-		jPanel.setLayout(new GridBagLayout());
+		
+		layout.setHgap(10);
+	    layout.setVgap(10);
+		
+		jPanel.setLayout(layout);
 		jPanel.setPreferredSize(new Dimension(400, 200));
 		for(String str: nameList) {
 			JTextArea jTextArea = new JTextArea(1, 12);
-			jTextArea.setFont(new Font("Courier",Font.PLAIN,(int) width/150));
+			jTextArea.setFont(new Font("Courier",Font.PLAIN,(int) width/100));
 			jTextArea.setEditable(false);
 			jTextArea.setText(str);
 			jTextArea.addMouseListener(new MouseAdapter() {
@@ -435,17 +460,6 @@ public class BaseView_v4 {
 		    
 		frame.getContentPane().add(jPanel2);
 		frame.pack();
-	}
-	
-	public static void modifyFrame2(JPanel jPanel1, JTextField jTextField, JPanel jPanel2, JFrame frame, JTree jTree, String database, String host,String passwd) {
-		
-		jPanel1.add(getsearchPanel(jTextField.getText(), database, host, passwd, jTree));
-		//jPanel2.removeAll();
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-	    //jPanel2.add(getsearchPanel(jTextField.getText(), database, host, passwd, jTree));
-        jPanel1.repaint();
-		//frame.getContentPane().add(jPanel2);
-	    frame.pack();
 	}
 	
 	public static ArrayList<DefaultMutableTreeNode> getLeafNodes(DefaultMutableTreeNode root) {
