@@ -19,7 +19,7 @@ apt install default-jre # install jdk
 apt-get install python3 # install python3
 apt install python3-pip # install pip3
 pip3 install  mysql-connector # install mysql-connector library
-apt-get install xterm # install xtearm
+apt-get install xterm # install xterm
 cd Bug_Collection # going to Bug_Collection folder
 python3 Data_Populate.py -host localhost -database <database> -user root -passwd <password (if applicable)> # populating the database
 cd .. (get back to the original folder)

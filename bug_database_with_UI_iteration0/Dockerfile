@@ -10,10 +10,11 @@ COPY Bug_Collection                   /IPT/UI/Bug_Collection
 #COPY BugDatabase_lib      /IPT/UI/BugDatabase_lib
 # UI code
 #  COPY BugDatabase.jar                 /IPT/UI/BugDatabase.jar
-COPY setup.sh                         /IPT/UI/setup.sh
-COPY mysql-connector-java-8.0.16.jar  /IPT/UI/mysql-connector-java-8.0.16.jar
-COPY BugDatabase/src/BaseView.java    /IPT/UI/BaseView.java
-
+COPY setup.sh                                         /IPT/UI/setup.sh
+COPY mysql-connector-java-8.0.16.jar                  /IPT/UI/mysql-connector-java-8.0.16.jar
+COPY BugDatabase/src/BaseView_v4.java                 /IPT/UI/BaseView_v4.java
+COPY BugDatabase/src/HighlightTreeCellRenderer.java   /IPT/UI/HighlightTreeCellRenderer.java
+COPY json-20180813.jar                                /IPT/UI/json-20180813.jar
 
 
 WORKDIR /IPT/UI
