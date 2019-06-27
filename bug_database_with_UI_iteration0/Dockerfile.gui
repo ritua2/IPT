@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 
+
 ENV mysql_database "ipt_bugs"
 ENV mysql_password "samplepassword"
 
@@ -20,7 +21,7 @@ COPY json-20180813.jar                                /IPT/UI/json-20180813.jar
 WORKDIR /IPT/UI
 
 
-RUN apt-get update && apt install mysql-server default-jre default-jdk ecj python3 python3-pip libcr-dev mpich -y &&\
+RUN apt-get update && apt install mysql-server default-jre default-jdk ecj python3 python3-pip -y &&\
     pip3 install  mysql-connector && apt-get install xterm -y &&\
     chmod +x /IPT/UI/setup.sh
 

@@ -1,0 +1,12 @@
+FROM ubuntu:18.04
+
+
+
+
+WORKDIR /IPT/MPI
+
+
+RUN apt-get update && apt install mpich -y
+
+
+CMD bash
