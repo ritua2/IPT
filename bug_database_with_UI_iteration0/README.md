@@ -1,10 +1,10 @@
 # 0th iteration of the database of logical errors.
 
-Curation of errors and integration: Trung Nguyen
-
-UI: Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop) and Krishan Pal Singh
-
 Creation of Docker image, integration: Carlos Redondo
+
+GUI: Krishan Pal Singh and Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop)  
+
+Curation of errors and integration: Trung Nguyen
 
 Design, bug repo curation, integration: Ritu Arora
 
@@ -101,4 +101,17 @@ ssh -X username@server.example.com
 
 Some of the bugs presented in this project have been obtained from Stack Overflow threads.
 
+
+
+## Some useful links:
+
+1. The Docker image containing the GUI and some of the errors/bugs: https://lnkd.in/em_qnYm
+
+2. A video-demo of using this Docker image: https://lnkd.in/esADixF
+
+3. Git repository containing the bugs: https://lnkd.in/enN7p79
+
+4. Demo of installing the Docker image: https://lnkd.in/eTSm_mC
+
+5. If interested in contributing errors/bugs, please create a pull request on the following Git repo:  https://lnkd.in/eQcKfZq 
 
