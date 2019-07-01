@@ -96,3 +96,9 @@ docker run -it --rm carlosred/ipt_bugs-database:cuda
 ssh -X username@server.example.com
 ```
 
+
+### Acknowledgements
+
+Some of the bugs presented in this project have been obtained from Stack Overflow threads.
+
+

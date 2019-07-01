@@ -1,0 +1,31 @@
+As explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault :
+
+
+Several issues:
+- Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes. It is recommended to use normal Send, because in contrast to synchronous send (SSend) normal blocking send returns as soon as you can reuse the buffer.
+
+- It is unnecessary to use message tags. Recommended to set tag to 0. Faster performance wise.
+
+- The result shouldn't be a simple variable, but an array of size at least (p-1)
+
+- It is not recommended to allocate arrays on stack, like MPI_Request and MPI_Status if the size is not a known small number. In this case the size of array is (p-1), it is better to use malloc for this data structure.
+
+- Use MPI_STATUSES_IGNORE if not checking status.
+
+- Specify number of items (1) instead of sizeof(double).
+
+- The best version is just to use MPI_Gather.
+
+- Generally there is no reason not to run computations on the root node.
+
+
+* Error message
+
+```
+Fatal error in PMPI_Waitall: Invalid argument, error stack:
+PMPI_Waitall(396): MPI_Waitall(count=3, req_array=0x7fffffff9640, status_array=(nil)) failed
+PMPI_Waitall(367): Null pointer in parameter array_of_statuses
+Fatal error in PMPI_Waitall: Invalid argument, error stack:
+PMPI_Waitall(396): MPI_Waitall(count=3, req_array=0x7fffffff9640, status_array=(nil)) failed
+PMPI_Waitall(367): Null pointer in parameter array_of_statuses
+```
