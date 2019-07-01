@@ -2,7 +2,7 @@
 
 Creation of Docker image, integration: Carlos Redondo
 
-UI: Krishan Pal Singh and Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop)  
+GUI: Krishan Pal Singh and Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop)  
 
 Curation of errors and integration: Trung Nguyen
 
