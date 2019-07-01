@@ -75,7 +75,18 @@ docker run -it --rm carlosred/ipt_bugs-database:mpi
 
 ## Installation with Docker (CUDA)
 
-Currently not available
+```bash
+git clone https://github.com/ritua2/IPT
+cd IPT/bug_database_with_UI_iteration0
+
+
+# Build the image
+docker build -t carlosred/ipt_bugs-database:cuda -f Dockerfile.cuda .
+
+
+# Linux systems
+docker run -it --rm carlosred/ipt_bugs-database:cuda
+```
 
 
 
