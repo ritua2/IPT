@@ -97,7 +97,7 @@ ssh -X username@server.example.com
 ```
 
 
-Some useful links:
+##Some useful links:
 
 1) The #Docker image containing the GUI and some of the errors/bugs: https://lnkd.in/em_qnYm
 
