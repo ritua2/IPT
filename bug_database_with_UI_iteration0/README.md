@@ -1,10 +1,10 @@
 # 0th iteration of the database of logical errors.
 
-Curation of errors and integration: Trung Nguyen
-
-UI: Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop) and Krishan Pal Singh
-
 Creation of Docker image, integration: Carlos Redondo
+
+UI: Krishan Pal Singh and Saumya Shah (https://github.com/saumyashah7/Repository-Lookup-Desktop)  
+
+Curation of errors and integration: Trung Nguyen
 
 Design, bug repo curation, integration: Ritu Arora
 
