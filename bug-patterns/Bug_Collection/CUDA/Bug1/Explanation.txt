@@ -1,4 +1,6 @@
-Will update soon ... 
+While converting nested for-loops into a CUDA kernel, it may be required to allocate arrays on the GPU’s global memory using a function like
+cudaMalloc and initialize them.
+
 
 * Error message
 

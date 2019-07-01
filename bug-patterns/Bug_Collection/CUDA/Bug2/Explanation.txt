@@ -1,4 +1,13 @@
-Will upate soon ...
+An array of N elements is being updated in a nested for-loop. To split the process of updating this array across multiple
+GPU threads by flattening the outer for-loop, a global array was constructed. The number of elements in this global array
+was equal to (N*number of threads).
+Each thread updated its set of N elements. After the threads had finished updating the elements in their share of array, an element-wise
+reduction of the array across the grid was needed to get the final result. The value of the elements in the resulting array would be equal to the sum total of the values of the corresponding elements in the copies of the array that were local to each thread in the grid. 
+The buggy version called __syncthreads() in a CUDA kernel just before performing the element-wise reduction of the array, hoping that calling __syncthreads() would help in synchronizing the threads across the grid. However, calling __syncthreads() in the kernel only ensures that all warps in a thread block
+have synchronized - in other words, it ensures that all the threads in a block have reached a barrier.
+Since calling __syncthreads() does not force inter-block synchronization of the threads, the code produced incorrect results for the element-wise reduction of the array. 
+To reliably synchronize all the threads in a grid before doing the element-wise reduction of an array, one can exit from the
+kernel in which the elements of the array are being computed, and immediately call another kernel in which the element- wise reduction can be done.
 
 
 * Error message
