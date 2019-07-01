@@ -99,7 +99,7 @@ ssh -X username@server.example.com
 
 ## Some useful links:
 
-1) The #Docker image containing the GUI and some of the errors/bugs: https://lnkd.in/em_qnYm
+1) The Docker image containing the GUI and some of the errors/bugs: https://lnkd.in/em_qnYm
 
 2) A video-demo of using this Docker image: https://lnkd.in/esADixF
 
