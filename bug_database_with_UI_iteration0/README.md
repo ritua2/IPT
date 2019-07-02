@@ -9,6 +9,16 @@ Curation of errors and integration: Trung Nguyen
 Design, bug repo curation, integration: Ritu Arora
 
 
+
+## Prequisites
+
+1. Docker: Installation instructions for Linux (Ubuntu), Mac, and Windows are available [here](./docker_installation_instructions.md)
+
+
+
+
+
+
 ## Steps for installation (set-up):
 
 ```bash
