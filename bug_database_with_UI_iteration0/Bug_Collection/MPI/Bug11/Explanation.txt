@@ -1,4 +1,4 @@
-Incorrect usage of Bcast, it needs to be call from all nodes.
+Incorrect usage of Bcast, it needs to be called from all MPI processes.
 
 
 * Error message
