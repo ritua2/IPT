@@ -10,7 +10,7 @@ int main(){
   }
 
   // running the loop 10 times using openmp
-#pragma omp parallel for shared (sum) private(T) reduction (+ : sum)
+#pragma omp parallel for default (none) private(T) reduction (+ : sum)
   for ( int i = 0; i < 10; i ++) {
     
     // assign value for elements in array T
