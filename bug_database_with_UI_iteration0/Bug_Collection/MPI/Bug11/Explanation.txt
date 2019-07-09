@@ -1,3 +1,5 @@
+Note from Ritu: This is a wrongly filed bug - fixed and unfixed versions are the same and there is no Bcast function user. Therefore, this bug should be removed till it is fixed.
+
 Incorrect usage of Bcast, it needs to be called from all MPI processes.
 
 
