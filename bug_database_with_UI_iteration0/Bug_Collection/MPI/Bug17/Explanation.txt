@@ -1,1 +1,20 @@
+The root cause is both `total` and `disps` should be assembled on the root rank (rank 0 in this example).
+In details, in the buggy version:
+`````````````````````````````````
+    while(i<=rank){
+        a1[i]=a[0];
+        i++;
+    }
+    int disps[size];
+    int y=rank;
+    disps[rank]=0;
+    while(y!=0){
+        disps[rank]+=y;
+        y--;
+    }
+    total[rank]=rank+1;
+`````````````````````````````````
+
+They are currently "distributed" and hence not initialized on the root rank, which leads to an undefined behavior such as a crash.
+
 
