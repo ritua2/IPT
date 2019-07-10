@@ -16,47 +16,52 @@ int main(int argc, char **argv)
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD,&nprocess);
     MPI_Comm_rank(MPI_COMM_WORLD,&process_id);
-    //Nxl=((Nx-2)/nprocess)+2;
-    //printf("NXL=%d\n",Nxl);
-    //  printf("process_id=%d\n",process_id);
+    
     if(process_id==0)
     {
-        for(int i = 0;i < 5;i++)
+        for( i=0;i <5;i++)
         {
-            for(int j = 0;j < Ny;j++)
+            for(j=0;j <Ny;j++)
             {
                 a[i][j]=3*2*i;
-                MPI_Send(&a[Nxl-1][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD);
+                MPI_Send(&a[i][j],1,MPI_DOUBLE,1,0,MPI_COMM_WORLD);
+                //printf("Process %d sent: %lf", process_id, a[i][j]);
             }
         }
-        for(int i = 0;i < 5;i++)
+        for(i=5;i <Nx;i++)
         {
-            for(int j = 0;j < Ny;j++)
+            for(j=0;j <Ny;j++)
             {
-                printf("matrices=%f\n",a[i][j]);
-                MPI_Recv(&a[1][j],1,MPI_DOUBLE,1,1,MPI_COMM_WORLD,&status);
-                printf("PROCESS_ID=%d\n",process_id);
+                MPI_Recv(&a[i][j],1,MPI_DOUBLE,1,1,MPI_COMM_WORLD,&status);
             }
         }
     }
     if(process_id==1)
     {
-        for(int i = 5; i < 10;i++)
+        for(i = 0;i < 5;i++)
         {
-            for(int j=1; j < Ny;j++)
+            for(j=0;j<Ny;j++)
             {
-                MPI_Recv(&a[Nxl][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD,&status);
-                printf("PROCESS_ID=%d\n",process_id);
-            }
-        }     
-        for(int i=5;i < 10;i++)
-        {
-            for(int j=0;j<Ny;j++)
-            {
-                a[i][j]=4*2;
-                MPI_Send(&a[2][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD);
+                MPI_Recv(&a[i][j],1,MPI_DOUBLE,0,0,MPI_COMM_WORLD,&status);
             }
         }
+	for(i=5;i < Nx;i++)
+        {
+            for(j = 0;j<Ny;j++)
+            {
+                a[i][j]=4*2;
+                MPI_Send(&a[i][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD);
+            }
+        }
+
+    }
+    if(process_id==1){
+    	for(i=0;i < Nx;i++){
+            for(j = 0;j<Ny;j++){
+		printf("%lf ", a[i][j]);
+	    }
+	    printf("\n");
+	}
     }
     MPI_Finalize();
 }
