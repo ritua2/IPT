@@ -1,14 +1,7 @@
-The buggy version may produce segmentation fault on some systems as explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault :
+The buggy version may produce segmentation fault on some systems as explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault but ran without giving any segmentaiton fault on Stampede2:
 
 
 Several issues:
--  MPI_Request  reqs[p-1];
-   MPI_Status   stats[p-1];
-    
-    ->
-     
-    MPI_Request  reqs[p];
-    MPI_Status   stats[p];
     
 - Isend passes &resultado several times without waiting until previous non-blocking operation finishes and this is likely to produce incorrect results.
 
