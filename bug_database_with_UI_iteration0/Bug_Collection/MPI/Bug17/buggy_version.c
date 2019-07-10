@@ -18,7 +18,9 @@ int main(int argc, char *argv[])
     int total[size];
     char str[100],a[100],a1[100];
     if (rank == 0) {
+        //Note from Ritu: The below statement os incorrect - use strcpy instead
         str =  "abcd";        
+        strcpy(str, "abcd");
     }
 
     MPI_Scatter(str,1,MPI_CHAR,a,1,MPI_CHAR,0,MPI_COMM_WORLD);
