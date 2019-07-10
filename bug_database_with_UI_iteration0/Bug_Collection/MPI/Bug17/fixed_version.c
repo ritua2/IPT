@@ -5,7 +5,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <mpi.h>
-using namespace std;
+//using namespace std;
 int main(int argc, char *argv[])
 {
     MPI_Init(&argc,&argv);
