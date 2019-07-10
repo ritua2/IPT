@@ -28,7 +28,8 @@ int main()
 
 // Reassign total sum value to "sum" variable 
   sum = receive_placeholder;
-
+  if (rank == 0) 
+    printf ("sum = %d\n",sum);  
   MPI_Finalize();
   return 0;
 }

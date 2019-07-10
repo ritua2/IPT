@@ -7,11 +7,4 @@ However, the collective is in contiguous order. Therefore, the collected data wi
 
 * Error message
 
-```
-buggy_version.c(39): warning #266: function "prinf" declared implicitly
-        prinf("rev[%d] is %d\n",i,rev[i]);
-        ^
-
-/tmp/iccfQXp3S.o: In function `main':
-buggy_version.c:(.text+0x162): undefined reference to `prinf'
-```
+None

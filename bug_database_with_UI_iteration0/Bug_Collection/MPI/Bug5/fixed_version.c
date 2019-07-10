@@ -18,7 +18,7 @@ int main()
   for (int i=start;i<end;i++) {
     int flag=0;
     if (i==(end-1)||(i==19)){
-      forlag =1; 
+      int forlag =1; 
     }
     int result = 0; 
     if (flag == 1) {

@@ -1,5 +1,6 @@
 #include <mpi.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #define CHUNKSIZE 1000
 /* message tags */

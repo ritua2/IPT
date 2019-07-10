@@ -35,3 +35,8 @@ int main()
   }
   return 0;
 }
+  if (rank == 0)
+    for (int i =0; i < 100; i++)
+      printf("a[%d] = %d\n",i,rev[i]);
+  MPI_Finalize();
+}
