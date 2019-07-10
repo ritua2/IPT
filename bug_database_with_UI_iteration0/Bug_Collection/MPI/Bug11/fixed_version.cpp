@@ -1,7 +1,7 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "mpi.h"
-//#define ARRAYSIZE   16000000
 #define ARRAYSIZE 64
 
 int main (int argc, char *argv[]) {
@@ -21,7 +21,7 @@ int main (int argc, char *argv[]) {
     float array[cells];
     int i;
     float resultado;
-    float   data[ARRAYSIZE];    /* the intial array */
+    float data[ARRAYSIZE];    /* the intial array */
 
     if (myrank == 0) {
         t1 = MPI_Wtime();
@@ -30,7 +30,6 @@ int main (int argc, char *argv[]) {
 
         // ********************** INICIALIZANDO ARRAY **********************
         int     i;          /* loop variable */
-        //float   data[ARRAYSIZE];    /* the intial array */
 
         printf("Starting serial array example...\n");
         printf("Using array of %d floats. Requires %ld bytes\n",ARRAYSIZE,sizeof(data));
@@ -42,14 +41,8 @@ int main (int argc, char *argv[]) {
 
         /* Print a few sample results */
         printf("Sample results\n");
-        printf("   data[1]=%e\n",  data[1]);
-        printf("   data[32]=%e\n",  data[32]);
-        //printf("   data[1000]=%e\n",  data[1000]);
-        //printf("   data[10000]=%e\n",  data[10000]);
-        //printf("   data[100000]=%e\n",  data[100000]);
-        //printf("   data[1000000]=%e\n",  data[1000000]);
-        printf("\nAll Done!\n");
-        // ********************** ARRAY INICIALIZADO **********************
+        printf("   data[1]=%f\n",  data[1]);
+        printf("   data[32]=%f\n",  data[32]);
 
         MPI_Comm_size (MPI_COMM_WORLD,&size);
         printf("Total of tasks: %d\n", size);
@@ -58,32 +51,52 @@ int main (int argc, char *argv[]) {
         //int cells = ARRAYSIZE/size;
         int id_task;
         for(id_task = 0; id_task < size; id_task++) {
-            //float array[cells];
             int i=0;
-            for(i=0; i<cells; i++)
+            for(i=0; i<cells; i++){
                 array[i] =  i * (id_task+1.0);
-            if(id_task!=0){ 
+            }
+            if(id_task==0){
+        for(i=0; i<cells; i++){
+            data[i]=array[i];
+                 }
+        } else{
                 MPI_Send(&array, cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
             }
     }
-
+        
         printf("master: %d at processor: %s\n",myrank, name);
-
+        printf("Sample results\n");
+      
+        printf("   data[1]=%f\n", data[1]);
+        printf("   data[4]=%f\n", data[4]);
     }
+    
     if(myrank!=0){
         MPI_Recv(array, cells, MPI_FLOAT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     }
 
+
+    if(myrank==1){
+    printf("test before   array[1]=%f\n", array[1]);
+        printf("test before   array[4]=%f\n", array[4]);
+    }
     for(i=0; i<cells; i++)
-        array[i] =  i * (myrank+1.0);
+        array[i] =  i * (myrank+2.0);
+
+    if(myrank==1){
+        printf("test after   array[1]=%f\n", array[1]);
+        printf("test after   array[4]=%f\n", array[4]);
+    }
 
     MPI_Allgather(array, cells, MPI_FLOAT, data, cells,MPI_FLOAT,MPI_COMM_WORLD);
     
 
     if (myrank == 0) {
     printf("Sample results\n");
-        printf("   data[1]=%e\n",  data[1]);
-        printf("   data[32]=%e\n",  data[32]);
+        printf("   data[1]=%f\n",  data[1]);
+        printf("   data[4]=%f\n",  data[4]);
+        printf("   data[33]=%f\n",  data[33]);
+    printf("   data[63]=%f\n",  data[63]);
         t2 = MPI_Wtime();
         MPI_Get_processor_name(name, &result);
         printf("master: %d at processor: %s\ntime: %lf\n",myrank, name,t2-t1);

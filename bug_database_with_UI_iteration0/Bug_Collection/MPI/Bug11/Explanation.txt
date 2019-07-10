@@ -1,12 +1,14 @@
-Update: The fixed version as updated as per the commentary at the following StackOverFlow link:
+Update: This bug is related to the following StackOverFlow topic:
 
         https://stackoverflow.com/questions/46791977/mpi-reduce-program-getting-segmentation-fault?noredirect=1&lq=1
 
+Key Fixes:
 
     MPI_Send(&array[id_task*cells], cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
     ->
     MPI_Send(&array, cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
 
+    MPI_Allgather was used instead of MPI_Send and MPI_Recv calls. 
 
 * Error message
 

@@ -27,7 +27,7 @@ mpicxx -o fixed_version fixed_version.cpp
 ibrun -np 2 buggy_version  
 
 # Fixed version
-ibrun -np 4 fixed_version
+ibrun -np 2 fixed_version
 ```
 
 
