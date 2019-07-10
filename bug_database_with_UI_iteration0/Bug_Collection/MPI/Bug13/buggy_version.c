@@ -49,7 +49,7 @@ int main(int argc, char **argv)
                 MPI_Send(&a[2][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD);
             }
         }
-        for(int i = 6;i < 10;i++)
+        for(int i = 5;i < 10;i++)
         {
             for(int j=0;j<Ny;j++)
             {
