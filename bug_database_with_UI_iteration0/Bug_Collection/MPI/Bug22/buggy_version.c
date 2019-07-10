@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <mpi.h> 
 
+
+
+// Add the logical error somewhere
+
 int main()
 {
   int size;
@@ -21,22 +25,24 @@ int main()
   for (int i = p_start_value ; i < p_end_value; i++) {
 
     // compute all elements at even indexes first
-    if (i < 50) {
-      arr[i*2] =2 ;
+    if (i%2==0) {
+      arr[i] =2 ;
     }
 
     // compute all elements at odd indexes second
     else {
-      arr[(i-5)*2+1] =3;
-    } 
+      arr[i] =3;
+    }
   }
 
   // Gathering the elements from each process to get the final array
   int rev [100];
   MPI_Gather(&arr[rank*range],range, MPI_INT,rev, range,MPI_INT,0, MPI_COMM_WORLD);
-  if (rank == 0)
+  if (rank == 0){
     for (int i =0; i < 100; i++)
-      printf("a[%d] = %d\n",i,rev[i]);
+      printf("arr[%d] = %d\n",i,rev[i]);
+  
+  }
   MPI_Finalize();
   return 0;
 }
