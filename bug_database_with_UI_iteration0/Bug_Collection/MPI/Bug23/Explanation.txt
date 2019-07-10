@@ -1,10 +1,9 @@
-As explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault :
+The buggy version may produce segmentation fault on some systems as explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault but ran without giving any segmentaiton fault on Stampede2:
 
 
 Several issues:
-- Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes. It is recommended to use normal Send, because in contrast to synchronous send (SSend) normal blocking send returns as soon as you can reuse the buffer.
-
-- It is unnecessary to use message tags. Recommended to set tag to 0. Faster performance wise.
+    
+- Isend passes &resultado several times without waiting until previous non-blocking operation finishes and this is likely to produce incorrect results.
 
 - The result shouldn't be a simple variable, but an array of size at least (p-1)
 
@@ -16,7 +15,7 @@ Several issues:
 
 - The best version is just to use MPI_Gather.
 
-- Generally there is no reason not to run computations on the root node.
+
 
 
 * Error message
