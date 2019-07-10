@@ -1,4 +1,4 @@
-As explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault :
+The buggy version may produce segmentation fault on some systems as explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault :
 
 
 Several issues:
