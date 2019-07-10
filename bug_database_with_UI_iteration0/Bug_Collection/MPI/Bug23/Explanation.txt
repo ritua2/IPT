@@ -2,7 +2,15 @@ The buggy version may produce segmentation fault on some systems as explained on
 
 
 Several issues:
-- Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes if correct result is desired.
+-  MPI_Request  reqs[p-1];
+   MPI_Status   stats[p-1];
+    
+    ->
+     
+    MPI_Request  reqs[p];
+    MPI_Status   stats[p];
+    
+- Isend passes &resultado several times without waiting until previous non-blocking operation finishes and this is likely to produce incorrect results.
 
 - The result shouldn't be a simple variable, but an array of size at least (p-1)
 
