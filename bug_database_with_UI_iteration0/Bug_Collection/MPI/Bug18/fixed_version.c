@@ -34,6 +34,11 @@ int main()
   MPI_Gatherv(recvbuf,range, MPI_INT,arr,displs,
   recvcounts, MPI_INT, 0,MPI_COMM_WORLD);
   
+  if (rank == 0) {
+    for (int i =0; i < 100; i++) {
+     printf(" arr[%d] = %d\n",i,arr[i]);
+    }
+  }
   MPI_Finalize();
   return 0;
 }
