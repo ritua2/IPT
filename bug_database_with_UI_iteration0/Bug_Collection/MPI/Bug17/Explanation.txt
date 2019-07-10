@@ -1,5 +1,6 @@
-
-
+The process with rank 0 - which is the root here for the MPI_Gatherv call - does not have the arrays "total" and "displs" completely populated before the PI_Gatherv call.
+https://stackoverflow.com/questions/49517327/mpi-gatherv-throws-up-segmentation-fault
+https://stackoverflow.com/questions/31890523/how-to-use-mpi-gatherv-for-collecting-strings-of-diiferent-length-from-different
 
 
 
@@ -16,6 +17,7 @@ compilation aborted for buggy_version.c (code 2)
 ```
 
 After the aforementioned error is fixed by using the strcpy function in the code, the code compiled but produced run-time erros mentioned below:
+
 ```
 a?
 1 0
