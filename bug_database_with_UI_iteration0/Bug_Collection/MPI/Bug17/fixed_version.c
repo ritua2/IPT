@@ -28,13 +28,11 @@ int main(int argc, char *argv[])
         i++;
     }
     int disps[size];
-    int y=rank;
-    disps[rank]=0;
-    while(y!=0){
-        disps[rank]+=y;
-        y--;
+    for (int i = 0; i < rank; i++) {
+        total[i]=i+1;
+        disps[i]=total[i];
+        
     }
-    total[rank]=rank+1;
     printf("%s\n",a1 );
     char k[100];
 

@@ -57,7 +57,7 @@ int main (int argc, char *argv[]) {
             int i=0;
             for(i=0; i<cells; i++)
                 array[i] =  i * (id_task+1.0);
-            MPI_Send(&array[id_task*cells], cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
+            MPI_Send(&array[0], cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
         }
 
         printf("master: %d at processor: %s\n",myrank, name);

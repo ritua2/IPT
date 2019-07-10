@@ -34,7 +34,7 @@ int main(int argc, char **argv)
             for(j=1;j<=Ny;j++)
             {
                 printf("matrices=%f\n",a[i][j]);
-                MPI_Recv(&a[1][j],1,MPI_DOUBLE,1,1,MPI_COMM_WORLD,&status);
+                MPI_Recv(&a[1][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD,&status);
                 printf("PROCESS_ID=%d\n",process_id);
             }
         }
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
             for(j=1;j<Ny;j++)
             {
                 a[i][j]=4*2;
-                MPI_Send(&a[2][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD);
+                MPI_Send(&a[2][j],1,MPI_DOUBLE,0,2,MPI_COMM_WORLD);
             }
         }
     }
