@@ -2,7 +2,7 @@ As explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-se
 
 
 Several issues:
-- Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes. It is recommended to use normal Send, because in contrast to synchronous send (SSend) normal blocking send returns as soon as you can reuse the buffer.
+- Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes if correct result is desired.
 
 - It is unnecessary to use message tags. Recommended to set tag to 0. Faster performance wise.
 
@@ -16,7 +16,7 @@ Several issues:
 
 - The best version is just to use MPI_Gather.
 
-- Generally there is no reason not to run computations on the root node.
+
 
 
 * Error message
