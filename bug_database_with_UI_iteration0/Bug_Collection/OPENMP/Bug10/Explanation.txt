@@ -11,7 +11,7 @@ In detail, in the buggy program, we have:
     }
 ``````````````````````````````
 
-Since `sum` is not thread independent, it need to be either computed using atomic/critical section or not under openmp block at all.
+Since `sum` is not thread independent, it need to be either computed using atomic/critical section or not under openmp block at all or rather using a single clause.
 
 
 * Error message
