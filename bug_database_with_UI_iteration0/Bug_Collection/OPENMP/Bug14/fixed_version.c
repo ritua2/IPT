@@ -6,12 +6,11 @@ int main(){
     int DATA_MAG = 100;
     int H[100];
     int scale_factor = 10;
-   
+    #pragma omp parallel for reduction(+: sum)
     for (int i =0; i < DATA_MAG;i++) {
         H[i] = i;
     }
     int LUT[100];
-    #pragma omp parallel for reduction(+: sum)
     for (int i = 0; i < DATA_MAG; i++)
     {
         sum += H[i];
@@ -21,5 +20,7 @@ int main(){
     for (int i = 0; i < 100; i++) {
         printf("%d \n",LUT[i]);
     }
-    return 0;
+	return 0;
 }
+
+

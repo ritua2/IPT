@@ -6,7 +6,6 @@ int main(){
     int DATA_MAG = 100;
     int H[100];
     int scale_factor = 10;
-    #pragma omp parallel for reduction(+: sum)
     for (int i =0; i < DATA_MAG;i++) {
         H[i] = i;
     }

@@ -1,13 +1,15 @@
-main function is required to run a standalone C/C++ program.
+Reduction is used incorrectly. 
+In details:
 
+``````````````````````````````
+#pragma omp parallel for reduction(+: sum)
+for (int i = 0; i < DATA_MAG; i++)
+{
+    sum += H[i];
 
-* Error message
+    LUT[i] = sum * scale_factor;
+}
+``````````````````````````````
 
-```
-buggy_version.c:6:9: error: expected declaration specifiers before ‘#pragma’
- #pragma omp parallel
-         ^~~
-buggy_version.c:7:1: error: expected identifier or ‘(’ before ‘{’ token
- {
- ^
-```
+The reduced variable `sum` is used to calculate `LUT[i]` .
+
