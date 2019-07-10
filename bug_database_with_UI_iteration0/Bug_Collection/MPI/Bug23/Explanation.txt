@@ -4,8 +4,6 @@ As explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-se
 Several issues:
 - Isend passes &resultado several times without waiting until previous non-blocking operation finishes. It is not allowed to reuse the buffer passed to Isend before making sure the operation finishes if correct result is desired.
 
-- It is unnecessary to use message tags. Recommended to set tag to 0. Faster performance wise.
-
 - The result shouldn't be a simple variable, but an array of size at least (p-1)
 
 - It is not recommended to allocate arrays on stack, like MPI_Request and MPI_Status if the size is not a known small number. In this case the size of array is (p-1), it is better to use malloc for this data structure.
