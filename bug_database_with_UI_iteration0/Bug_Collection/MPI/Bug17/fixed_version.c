@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         i++;
     }
     int disps[size];
-    for (int i = 0; i < rank; i++) {
+    for (int i = 0; i < size; i++) {
         total[i]=i+1;
         disps[i]=total[i];
         
