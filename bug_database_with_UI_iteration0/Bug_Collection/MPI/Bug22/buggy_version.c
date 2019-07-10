@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <mpi.h> 
 
-
-
-// Add the logical error somewhere
-
 int main()
 {
   int size;
@@ -25,13 +21,13 @@ int main()
   for (int i = p_start_value ; i < p_end_value; i++) {
 
     // compute all elements at even indexes first
-    if (i%2==0) {
-      arr[i] =2 ;
+    if (i<50) {
+      arr[i*2] =2 ;
     }
 
     // compute all elements at odd indexes second
     else {
-      arr[i] =3;
+      arr[(i-50)*2+1] =3;
     }
   }
 

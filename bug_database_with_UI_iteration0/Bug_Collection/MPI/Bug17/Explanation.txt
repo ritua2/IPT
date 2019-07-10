@@ -1,9 +1,10 @@
-There are two kind of errors in the program
-MPI_Recv(&b_req,sizeof(b_req),...); is incorrect, the buffer should be b_req (same issue with the MPI_Send()). Also, though sizeof(b_req) is correct here, it is misleading and  can br hardcoded to 1 instead.
-MPI_Send((double *)execution,(2*sizeof(double), ...); is incorrect too (same issue with MPI_Recv()). The buffer is ok, but the size should be 2 instead of 2*sizeof(double).
-These errors are causing an undetermined behavior and a buffer overflow, which explains why the behavior of the program is non deterministic.
-(Stackoverflow)
+The process with rank 0 - which is the root here for the MPI_Gatherv call - does not have the arrays "total" and "displs" completely populated before the PI_Gatherv call.
+https://stackoverflow.com/questions/49517327/mpi-gatherv-throws-up-segmentation-fault
+https://stackoverflow.com/questions/31890523/how-to-use-mpi-gatherv-for-collecting-strings-of-diiferent-length-from-different
 
+
+
+The original code had the following syntax error:
 
 * Error message
 
@@ -12,4 +13,23 @@ BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
 ...
 EXIT CODE: 11
 ...
+```
+
+After the aforementioned error is fixed by using the strcpy function in the code, the code compiled but produced run-time erros mentioned below:
+
+```
+a?
+1 0
+bb
+2 1
+ccc??
+3 3
+dddd?
+4 6
+[c455-133.stampede2.tacc.utexas.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 8. MPI process died?
+[c455-133.stampede2.tacc.utexas.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[c455-133.stampede2.tacc.utexas.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 75502) terminated with signal 11 -> abort job
+[c455-133.stampede2.tacc.utexas.edu:mpirun_rsh][process_mpispawn_connection] mpispawn_0 from node c455-133 aborted: Error while reading a PMI socket (4)
+TACC:  MPI job exited with code: 1 
+TACC:  Shutdown complete. Exiting.
 ```
