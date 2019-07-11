@@ -112,9 +112,9 @@ ssh -X username@server.example.com
 Some of the bugs presented in this project have been obtained from Stack Overflow threads and we are grateful to all the contributors there. This project is funded through the National Science Foundation Award #1642396 and we are grateful to NSF for the same. We are also grateful to XSEDE (NSF award # 1548562) and TACC for providing the computational resources required for this project. 
 
 
-### LICENSE
+### License
 
-This software has been made available to the public under the new BSD license.
+This software is being made available to the public under the new BSD license.
 
 ## Some useful links:
 
