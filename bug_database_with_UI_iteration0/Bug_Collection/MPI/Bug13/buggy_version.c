@@ -16,9 +16,7 @@ int main(int argc, char **argv)
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD,&nprocess);
     MPI_Comm_rank(MPI_COMM_WORLD,&process_id);
-    //Nxl=((Nx-2)/nprocess)+2;
-    //printf("NXL=%d\n",Nxl);
-    //  printf("process_id=%d\n",process_id);
+ 
     if(process_id==0)
     {
         for(int i=0;i <5;i++)
