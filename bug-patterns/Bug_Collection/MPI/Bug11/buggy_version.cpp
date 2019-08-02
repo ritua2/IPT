@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mpi.h"
-#define ARRAYSIZE   16000000
+#define ARRAYSIZE   64
 
 int main (int argc, char *argv[]) {
     MPI_Init(&argc, &argv);
@@ -38,12 +38,8 @@ int main (int argc, char *argv[]) {
 
         /* Print a few sample results */
         printf("Sample results\n");
-        printf("   data[1]=%e\n",  data[1]);
-        printf("   data[100]=%e\n",  data[100]);
-        printf("   data[1000]=%e\n",  data[1000]);
-        printf("   data[10000]=%e\n",  data[10000]);
-        printf("   data[100000]=%e\n",  data[100000]);
-        printf("   data[1000000]=%e\n",  data[1000000]);
+        printf("   data[1]=%f\n",  data[1]);
+        printf("   data[32]=%f\n",  data[32]);
         printf("\nAll Done!\n");
         // ********************** ARRAY INICIALIZADO **********************
 
@@ -53,7 +49,6 @@ int main (int argc, char *argv[]) {
         int cells = ARRAYSIZE/size;
         int id_task;
         for(id_task = 0; id_task < size; id_task++) {
-            //float array[cells];
             int i=0;
             for(i=0; i<cells; i++)
                 array[i] =  i * (id_task+1.0);
@@ -65,7 +60,6 @@ int main (int argc, char *argv[]) {
     }
     MPI_Recv(array, cells, MPI_FLOAT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     int i;
-    float resultado;
     for(i=0; i<cells; i++)
         array[i] =  i * (myrank+1.0);
 
@@ -73,15 +67,12 @@ int main (int argc, char *argv[]) {
         MPI_Send(array, cells, MPI_FLOAT, 0, 0, MPI_COMM_WORLD);
     }
 
-    MPI_Reduce(&array, &resultado, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
-
     if (myrank == 0) {
-        int j;
-        for(j=0; j<cells; j++){
-            for(i=0; i<5; i++){
-                printf("| %lf ",array[i*j]);
-            }
-        }
+        printf("Sample results\n");
+        printf("   data[1]=%f\n",  data[1]);
+        printf("   data[4]=%f\n",  data[4]);
+        printf("   data[33]=%f\n",  data[33]);
+        printf("   data[63]=%f\n",  data[63]);
         //t1 = MPI_Wtime();
         t2 = MPI_Wtime();
         MPI_Get_processor_name(name, &result);

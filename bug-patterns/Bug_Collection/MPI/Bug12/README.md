@@ -24,10 +24,10 @@ mpicxx -o fixed_version fixed_version.cpp
 
 ```bash
 # Incorrect version
-ibrun -np 4 buggy_version  
+ibrun -np 2 buggy_version  
 
 # Fixed version
-ibrun -np 4 fixed_version
+ibrun -np 2 fixed_version
 ```
 
 
@@ -35,8 +35,8 @@ ibrun -np 4 fixed_version
 
 ```bash
 # Incorrect version
-mpirun -np 4 buggy_version  
+mpirun -np 2 buggy_version  
 
 # Fixed version
-mpirun -np 4 fixed_version
+mpirun -np 2 fixed_version
 ```

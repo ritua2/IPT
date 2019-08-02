@@ -35,7 +35,7 @@ int main()
   }
   if (rank == 0) {
     for (int i = 0; i < 10; i++) {
-      prinf("rev[%d] is %d\n",i,rev[i]);
+      printf("rev[%d] is %d\n",i,rev[i]);
     }
   }
   return 0;

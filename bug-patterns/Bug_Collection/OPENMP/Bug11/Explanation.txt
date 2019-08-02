@@ -1,4 +1,4 @@
-TODO : complete this
+main function is required to run a standalone C/C++ program.
 
 
 * Error message

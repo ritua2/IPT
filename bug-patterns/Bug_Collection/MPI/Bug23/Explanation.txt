@@ -1,4 +1,21 @@
-TODO: Complete this
+The buggy version may produce segmentation fault on some systems as explained on https://stackoverflow.com/questions/47265060/open-mpi-waitall-segmentation-fault but ran without giving any segmentaiton fault on Stampede2:
+
+
+Several issues:
+    
+- Isend passes &resultado several times without waiting until previous non-blocking operation finishes and this is likely to produce incorrect results.
+
+- The result shouldn't be a simple variable, but an array of size at least (p-1)
+
+- It is not recommended to allocate arrays on stack, like MPI_Request and MPI_Status if the size is not a known small number. In this case the size of array is (p-1), it is better to use malloc for this data structure.
+
+- Use MPI_STATUSES_IGNORE if not checking status.
+
+- Specify number of items (1) instead of sizeof(double).
+
+- The best version is just to use MPI_Gather.
+
+
 
 
 * Error message

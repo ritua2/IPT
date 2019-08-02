@@ -11,10 +11,10 @@ or
 
 ```bash
 # Incorrect version
-mpicc -o buggy_version buggy_version.c
+mpicxx -o buggy_version buggy_version.cpp
 
 # Fixed version
-mpicc -o fixed_version fixed_version.c
+mpicxx -o fixed_version fixed_version.cpp
 ```
 
 

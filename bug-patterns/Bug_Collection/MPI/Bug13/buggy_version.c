@@ -3,7 +3,8 @@
 #include "mpi.h"
 #include<math.h>
 
-double a[15][15];
+
+double a[10][10];
 
 int main(int argc, char **argv)
 {
@@ -20,39 +21,39 @@ int main(int argc, char **argv)
     //  printf("process_id=%d\n",process_id);
     if(process_id==0)
     {
-        for(i=1;i<=5;i++)
+        for(int i=0;i <5;i++)
         {
-            for(j=1;j<=Ny;j++)
+            for(int j=0;j <Ny;j++)
             {
                 a[i][j]=3*2*i;
-                MPI_Send(&a[Nxl-1][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD);
+                MPI_Send(&a[i][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD);
             }
         }
-        for(i=1;i<=5;i++)
+        for(int i=0;i <5;i++)
         {
-            for(j=1;j<=Ny;j++)
+            for(int j=0;j <Ny;j++)
             {
                 printf("matrices=%f\n",a[i][j]);
-                MPI_Recv(&a[1][j],1,MPI_DOUBLE,1,1,MPI_COMM_WORLD,&status);
+                MPI_Recv(&a[i][j],1,MPI_DOUBLE,1,1,MPI_COMM_WORLD,&status);
                 printf("PROCESS_ID=%d\n",process_id);
             }
         }
     }
     if(process_id==1)
     {
-        for(i=6;i<=10;i++)
+        for(int i=5;i < 10;i++)
         {
-            for(j=1;j<Ny;j++)
+            for(int j = 0;j<Ny;j++)
             {
                 a[i][j]=4*2;
-                MPI_Send(&a[2][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD);
+                MPI_Send(&a[i][j],1,MPI_DOUBLE,1,2,MPI_COMM_WORLD);
             }
         }
-        for(i=6;i<=10;i++)
+        for(int i = 5;i < 10;i++)
         {
-            for(j=1;j<Ny;j++)
+            for(int j=0;j<Ny;j++)
             {
-                MPI_Recv(&a[Nxl][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD,&status);
+                MPI_Recv(&a[i][j],1,MPI_DOUBLE,0,1,MPI_COMM_WORLD,&status);
                 printf("PROCESS_ID=%d\n",process_id);
             }
         }

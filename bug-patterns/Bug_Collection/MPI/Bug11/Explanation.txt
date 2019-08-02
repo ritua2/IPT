@@ -1,15 +1,16 @@
-Incorrect usage of Bcast, it needs to be call from all nodes.
+Update: This bug is related to the following StackOverFlow topic:
 
+        https://stackoverflow.com/questions/46791977/mpi-reduce-program-getting-segmentation-fault?noredirect=1&lq=1
+
+Key Fixes:
+
+    MPI_Send(&array[id_task*cells], cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
+    ->
+    MPI_Send(&array, cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
+
+    MPI_Allgather was used instead of MPI_Send and MPI_Recv calls. 
 
 * Error message
 
-```
-Fatal error in MPI_Send: Other MPI error, error stack:
-MPI_Send(186): MPI_Send(buf=0x7ffffb3ae200, count=4000000, MPI_FLOAT, dest=0, tag=0, MPI_COMM_WORLD) failed
-MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
-aborting job:
-Fatal error in MPI_Send: Other MPI error, error stack:
-MPI_Send(186): MPI_Send(buf=0x7ffffb3ae200, count=4000000, MPI_FLOAT, dest=0, tag=0, MPI_COMM_WORLD) failed
-MPID_Send(93): DEADLOCK: attempting to send a message to the local process without a prior matching receive
-```
+None
 

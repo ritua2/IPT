@@ -1,10 +1,113 @@
-The error is because incorrect collection of non-contiguous data.
+The error is because of incorrect collection of non-contiguous data.
 
 The data is computed as odd-first even-second order.
 
-However, the collective is in contiguous order. Therefore, the collected data will be erroneous 
+However, the collective is in contiguous order. Therefore, the collected data will be erroneous. 
 
 
 * Error message
 
 None
+
+* Wrong Results:
+
+arr[0] = 2
+arr[1] = 808334126
+arr[2] = 2
+arr[3] = 0
+arr[4] = 2
+arr[5] = 0
+arr[6] = 2
+arr[7] = 0
+arr[8] = 2
+arr[9] = 0
+arr[10] = 2
+arr[11] = 0
+arr[12] = 2
+arr[13] = 0
+arr[14] = 2
+arr[15] = 0
+arr[16] = 2
+arr[17] = 0
+arr[18] = 2
+arr[19] = 0
+arr[20] = 2
+arr[21] = 0
+arr[22] = 2
+arr[23] = 0
+arr[24] = 2
+arr[25] = 0
+arr[26] = 2
+arr[27] = 0
+arr[28] = 2
+arr[29] = 0
+arr[30] = 2
+arr[31] = 0
+arr[32] = 2
+arr[33] = 0
+arr[34] = 2
+arr[35] = 0
+arr[36] = 2
+arr[37] = 0
+arr[38] = 2
+arr[39] = 0
+arr[40] = 2
+arr[41] = 0
+arr[42] = 2
+arr[43] = 0
+arr[44] = 2
+arr[45] = 0
+arr[46] = 2
+arr[47] = 0
+arr[48] = 2
+arr[49] = 0
+arr[50] = 0
+arr[51] = 3
+arr[52] = 0
+arr[53] = 3
+arr[54] = 0
+arr[55] = 3
+arr[56] = 0
+arr[57] = 3
+arr[58] = 0
+arr[59] = 3
+arr[60] = 0
+arr[61] = 3
+arr[62] = 0
+arr[63] = 3
+arr[64] = 0
+arr[65] = 3
+arr[66] = 0
+arr[67] = 3
+arr[68] = 0
+arr[69] = 3
+arr[70] = 0
+arr[71] = 3
+arr[72] = 0
+arr[73] = 3
+arr[74] = 0
+arr[75] = 3
+arr[76] = 0
+arr[77] = 3
+arr[78] = 0
+arr[79] = 3
+arr[80] = 0
+arr[81] = 3
+arr[82] = 0
+arr[83] = 3
+arr[84] = 0
+arr[85] = 3
+arr[86] = 0
+arr[87] = 3
+arr[88] = 0
+arr[89] = 3
+arr[90] = 0
+arr[91] = 3
+arr[92] = 0
+arr[93] = 3
+arr[94] = 0
+arr[95] = 3
+arr[96] = 32764
+arr[97] = 3
+arr[98] = 0
+arr[99] = 3

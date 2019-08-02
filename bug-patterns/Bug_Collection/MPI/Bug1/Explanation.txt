@@ -1,4 +1,4 @@
-The error occurs due to incorrect balancing the workload.
+The error occurs due to incorrect balancing of the workload.
 
 In the buggy version:
 
