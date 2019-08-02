@@ -1,5 +1,7 @@
 Summary: The buggy version of this example was erroneous at multiple levels. It seems like the algorithm was not approproately captured in the code. Process 0 updates half of the elements of a matrix and sends those values to process 1, and process 1 computes the other half and sends those values to Process 0. In the program, the ordering of sends and receives was incorrect - each send should have a mathcing receive but in the program, both the processes were trying to send the messages to each other without waiting to receive. Secondly, the message tags were not used correctly. The fixed version solves the problem nut can be optimized further by using a collective operation. Alternatively, MPI_Sendrecv calls could have been used.
 
+Minor point: there are unused variables in the program.
+
 
 
 ``````````````````````````````
