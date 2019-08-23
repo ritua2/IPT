@@ -1,14 +1,41 @@
- Freeing the "workers" communicator before being done using it. Additional details:
+Freeing the "workers" communicator before being done using it. Additional details:
  https://stackoverflow.com/questions/37184982/two-mpi-allreduce-functions-not-working-gives-error-of-null-communicator
  
- The program crashes with segementation fault.
+The program crashes with segementation fault.
  
- Error messages at run-time:
- [comet-14-02.sdsc.edu:mpi_rank_0][error_sighandler] Caught error: Segmentation fault (signal 11)
-[comet-14-02.sdsc.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
-[comet-14-02.sdsc.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
-[comet-14-02.sdsc.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 22846) terminated with signal 11 -> abort job
-[comet-14-02.sdsc.edu:mpirun_rsh][process_mpispawn_connection] mpispawn_0 from node comet-14-02 aborted: Error while reading a PMI socket (4)
+Error messages at run-time from the buggy version
+mpirun -np 4 /home/rauta/bugdatabase/bug7 0.01
+pi =  3.11200000000000009948[cli_2]: [cli_0]: [cli_1]: aborting job:
+Fatal error in MPI_Allreduce:
+Invalid communicator, error stack:
+MPI_Allreduce(937): MPI_Allreduce(sbuf=0x7ffdcf34fd14, rbuf=0x7ffdcf34ed54, count=1, MPI_INT, MPI_SUM, MPI_COMM_NULL) failed
+MPI_Allreduce(853): Null communicator
+
+aborting job:
+Fatal error in MPI_Allreduce:
+Invalid communicator, error stack:
+MPI_Allreduce(937): MPI_Allreduce(sbuf=0x7ffc5e18de94, rbuf=0x7ffc5e18ced4, count=1, MPI_INT, MPI_SUM, MPI_COMM_NULL) failed
+MPI_Allreduce(853): Null communicator
+
+aborting job:
+Fatal error in MPI_Allreduce:
+Invalid communicator, error stack:
+MPI_Allreduce(937): MPI_Allreduce(sbuf=0x7ffff2867e94, rbuf=0x7ffff2866ed4, count=1, MPI_INT, MPI_SUM, MPI_COMM_NULL) failed
+MPI_Allreduce(853): Null communicator
+
+[comet-14-03.sdsc.edu:mpispawn_0][readline] Unexpected End-Of-File on file descriptor 5. MPI process died?
+[comet-14-03.sdsc.edu:mpispawn_0][mtpmi_processops] Error while reading PMI socket. MPI process died?
+[comet-14-03.sdsc.edu:mpispawn_0][child_handler] MPI process (rank: 2, pid: 19997) exited with status 1
+[comet-14-03.sdsc.edu:mpispawn_0][child_handler] MPI process (rank: 1, pid: 19996) exited with status 1
+[comet-14-03.sdsc.edu:mpispawn_0][child_handler] MPI process (rank: 0, pid: 19995) exited with status 1
+[rauta@comet-14-03 bugdatabase]$ [comet-14-03.sdsc.edu:mpispawn_0][report_error] connect() failed: Connection refused (111
+
+
+Output from the fixed version:
+mpirun -np 4 /home/rauta/bugdatabase/fixed_version 0.01
+pi =  3.13333333333333330373
+points: 1500
+in: 1175, out: 325, <ret> to exit
 
 
  ```
