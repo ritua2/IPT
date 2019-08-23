@@ -31,8 +31,6 @@ int main(int argc, char** argv){
            printf("[%d -> %d]\n", toMap[n], mapper[n]);
        }
    }
-   MPI_Bcast(mapper,IN,MPI_INT,0,MPI_COMM_WORLD);
-   MPI_Bcast(toMap,IN,MPI_INT,0,MPI_COMM_WORLD);
 
    int i = 0;
    while(i<IN){
