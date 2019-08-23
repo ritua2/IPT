@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "mpi.h"
@@ -63,12 +62,6 @@ int main (int argc, char *argv[]) {
                 MPI_Send(&array, cells, MPI_FLOAT, id_task, 0, MPI_COMM_WORLD);
             }
     }
-        
-        printf("master: %d at processor: %s\n",myrank, name);
-        printf("Sample results\n");
-      
-        printf("   data[1]=%f\n", data[1]);
-        printf("   data[4]=%f\n", data[4]);
     }
     
     if(myrank!=0){
@@ -76,30 +69,14 @@ int main (int argc, char *argv[]) {
     }
 
 
-    if(myrank==1){
-    printf("test before   array[1]=%f\n", array[1]);
-        printf("test before   array[4]=%f\n", array[4]);
-    }
     for(i=0; i<cells; i++)
         array[i] =  i * (myrank+2.0);
-
-    if(myrank==1){
-        printf("test after   array[1]=%f\n", array[1]);
-        printf("test after   array[4]=%f\n", array[4]);
-    }
 
     MPI_Allgather(array, cells, MPI_FLOAT, data, cells,MPI_FLOAT,MPI_COMM_WORLD);
     
 
     if (myrank == 0) {
-    printf("Sample results\n");
-        printf("   data[1]=%f\n",  data[1]);
-        printf("   data[4]=%f\n",  data[4]);
-        printf("   data[33]=%f\n",  data[33]);
-    printf("   data[63]=%f\n",  data[63]);
-        t2 = MPI_Wtime();
-        MPI_Get_processor_name(name, &result);
-        printf("master: %d at processor: %s\ntime: %lf\n",myrank, name,t2-t1);
+	printf("\nAll done!\n");
     }
     MPI_Finalize();
 
