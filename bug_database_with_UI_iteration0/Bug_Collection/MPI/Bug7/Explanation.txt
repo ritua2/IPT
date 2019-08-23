@@ -1,5 +1,7 @@
  Freeing the "workers" communicator before being done using it. Additional details:
  https://stackoverflow.com/questions/37184982/two-mpi-allreduce-functions-not-working-gives-error-of-null-communicator
+ 
+ The program crashes with segementation fault.
 
 
  ```
