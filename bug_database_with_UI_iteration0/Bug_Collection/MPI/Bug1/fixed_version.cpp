@@ -28,20 +28,20 @@ int main()
 	recvcounts[i]=10/size + (10%size);
     }
     displs[i]= displs[i-1]+ recvcounts[i-1];
-    //printf("\ni: %d, rank: %d, displs[i]: %d, recvcounts[i]: %d\n",i, rank, displs[i], recvcounts[i]);
+    printf("\ni: %d, rank: %d, displs[i]: %d, recvcounts[i]: %d\n",i, rank, displs[i], recvcounts[i]);
   }
   int recvbuf[range];
 
   for (int i=0;i < range;i++) {
     recvbuf[i] = i;
-    //printf("\nrank:%d, i:%d, recvbuf[i]:%d\n", rank, i, recvbuf[i]); 
+    printf("\nrank:%d, i:%d, recvbuf[i]:%d\n", rank, i, recvbuf[i]); 
   }
 
   MPI_Gatherv(recvbuf,range, MPI_INT,arr,recvcounts, displs, MPI_INT, 0, MPI_COMM_WORLD);
   
   if (rank == 0) {
     for (int i = 0 ; i < 10 ; i++) {
-      printf("recvbuf [%d] is %d",i,recvbuf[i]);
+      printf("arr [%d] is %d",i,arr[i]);
     }
   }
   
