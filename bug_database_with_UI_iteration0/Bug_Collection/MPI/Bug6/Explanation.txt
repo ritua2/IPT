@@ -12,3 +12,5 @@ the argument `numprocs` is not wanted here since the field is asking for the num
 * Error message
 
 None
+
+More details: https://stackoverflow.com/questions/41745413/c-mpi-allgather-produces-error
