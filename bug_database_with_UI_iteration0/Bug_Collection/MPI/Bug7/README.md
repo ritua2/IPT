@@ -35,8 +35,8 @@ ibrun -np 4 fixed_version
 
 ```bash
 # Incorrect version
-mpirun -np 4 buggy_version  
+mpirun -np 4 buggy_version 0.01
 
 # Fixed version
-mpirun -np 4 fixed_version
+mpirun -np 4 fixed_version 0.01
 ```
