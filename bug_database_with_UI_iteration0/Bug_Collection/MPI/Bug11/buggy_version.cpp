@@ -67,17 +67,10 @@ int main (int argc, char *argv[]) {
         MPI_Send(array, cells, MPI_FLOAT, 0, 0, MPI_COMM_WORLD);
     }
 
-    if (myrank == 0) {
-        printf("Sample results\n");
-        printf("   data[1]=%f\n",  data[1]);
-        printf("   data[4]=%f\n",  data[4]);
-        printf("   data[33]=%f\n",  data[33]);
-        printf("   data[63]=%f\n",  data[63]);
-        //t1 = MPI_Wtime();
-        t2 = MPI_Wtime();
-        MPI_Get_processor_name(name, &result);
-        printf("master: %d at processor: %s\ntime: %lf\n",myrank, name,t2-t1);
+    if(myrank == 0){
+        printf("\nAll Done!\n");
     }
+
     MPI_Finalize();
 
 }
