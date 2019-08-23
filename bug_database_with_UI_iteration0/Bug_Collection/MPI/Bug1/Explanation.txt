@@ -1,4 +1,4 @@
-The error occurs due to incorrect balancing of the workload.
+The error occurs due to incorrect balancing of the workload, and incorrect order of arguments in MPI_Gatherv.
 
 In the buggy version:
 
