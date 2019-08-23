@@ -8,12 +8,5 @@ The allreduce call requires involment of all processes which due to break and di
 * Error message
 
 ```
-buggy_version.c(9): warning #167: argument of type "int" is incompatible with parameter of type "int *"
-    MPI_Comm_size(MPI_COMM_WORLD,size);
-                                 ^
 
-buggy_version.c(10): warning #167: argument of type "int" is incompatible with parameter of type "int *"
-    MPI_Comm_rank(MPI_COMM_WORLD,rank);
-                                 ^
-tasks 0-3: Segmentation fault
 ```
