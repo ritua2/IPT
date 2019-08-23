@@ -1,4 +1,4 @@
-The error occurs due to incorrect balancing of the workload.
+The error occurs due to incorrect balancing of the workload. Moreover, the wrong array was getting printed.
 
 In the buggy version:
 
