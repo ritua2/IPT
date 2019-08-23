@@ -1,4 +1,4 @@
-Error due to incorrect argument value for Allgather
+Incorrect results. This error is due to incorrect argument value for Allgather.
 
 In the buggy version:
 
