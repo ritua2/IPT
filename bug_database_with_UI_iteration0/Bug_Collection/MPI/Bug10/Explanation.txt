@@ -1,6 +1,6 @@
 MPI_Type_get_extent arguments cannot be NULL.
 
-In details, in the buggy version:
+In the buggy version:
 
 ``````````````````````````````
    MPI_Type_get_extent(MPI_A, NULL, &extent);
