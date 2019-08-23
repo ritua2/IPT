@@ -86,8 +86,8 @@ int main(int argc, char *argv[])
                 if(request)
                     MPI_Send(&request, 1, MPI_INT, server, REQUEST, world);
             }
-            MPI_Comm_free(&workers);
         }
+	MPI_Comm_free(&workers);
 
     }
     MPI_Group_free(&worker_group);
