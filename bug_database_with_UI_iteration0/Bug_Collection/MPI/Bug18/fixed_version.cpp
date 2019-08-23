@@ -33,9 +33,17 @@ int main()
     //printf("\ni: %d, rank: %d, displs[i]: %d, recvcounts[i]: %d\n",i, rank, displs[i], recvcounts[i]);
   }
   
+  if (rank == 0) {
+    for (int i =0; i < 100; i++) {
+      arr[i] = i;
+    }
+  }
+  
   int recvbuf[range];
+
+  MPI_Scatterv(arr, recvcounts, displs, MPI_INT, recvbuf,range, MPI_INT, 0, MPI_COMM_WORLD);
   for (int i=0;i < range;i++) {
-    recvbuf[i] = i; 
+    recvbuf[i] += 1; 
   }
   MPI_Gatherv(recvbuf,range, MPI_INT,arr,recvcounts, displs, MPI_INT, 0,MPI_COMM_WORLD);
 
