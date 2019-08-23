@@ -1,4 +1,5 @@
- Freeing the workers communicator before you are done using it.
+ Freeing the "workers" communicator before being done using it. Additional details:
+ https://stackoverflow.com/questions/37184982/two-mpi-allreduce-functions-not-working-gives-error-of-null-communicator
 
 
  ```
