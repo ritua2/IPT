@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <mpi.h> 
 
-int main()
-{
 #include <stdio.h>
 #include <mpi.h> 
 
@@ -35,8 +33,5 @@ int main()
   recvcounts, MPI_INT, 0,MPI_COMM_WORLD);
   
   MPI_Finalize();
-  return 0;
-}
-
   return 0;
 }
