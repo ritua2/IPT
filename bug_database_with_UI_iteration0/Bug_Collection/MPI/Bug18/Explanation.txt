@@ -1,4 +1,4 @@
-The error occurs due to incorrect balancing the workload.
+The error occurs because the variable range is of type integer (this is correct), and if 100/size has a remainder, this remainder is not handled correctly. The code should take care of assigning the remainder value after the division (which most probably would be the number of iterations of a loop or the amount of remaining work) amongst the active MPI processes.
 
 In the buggy version:
 
