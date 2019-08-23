@@ -21,16 +21,23 @@ int main()
     end += 100 % size; 
     range += 100 % size;
   }
-  for (int i=0;i < size;i++) {
-    recvcounts[i] = range; 
-    displs[i]= (i==0)? 0: recvcounts[i-1]; 
+  recvcounts[0]=100/size;
+  displs[0]=0;
+  for (int i=1;i < size;i++) {
+    if(i<(size-1)){
+    	recvcounts[i] = 100/size;
+    }else if (i== (size-1)){
+	     recvcounts[i]=100/size + (100%size);
+    }
+    displs[i]= displs[i-1]+ recvcounts[i-1];
+    printf("\ni: %d, rank: %d, displs[i]: %d, recvcounts[i]: %d\n",i, rank, displs[i], recvcounts[i]);
   }
+  
   int recvbuf[range];
   for (int i=0;i < range;i++) {
     recvbuf[i] = i; 
   }
-  MPI_Gatherv(recvbuf,range, MPI_INT,arr,displs,
-  recvcounts, MPI_INT, 0,MPI_COMM_WORLD);
+  MPI_Gatherv(recvbuf,range, MPI_INT,arr,displs, recvcounts, MPI_INT, 0,MPI_COMM_WORLD);
   
   MPI_Finalize();
   return 0;
