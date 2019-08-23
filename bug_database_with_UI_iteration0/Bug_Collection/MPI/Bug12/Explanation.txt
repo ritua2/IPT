@@ -1,6 +1,8 @@
-MPI_Send may or may not block. It will block until the sender can reuse the sender buffer. Some implementations will return to the caller when the buffer has been sent to the communication layer. Some others will return to the caller when there's a matching MPI_Recv() at the other end. So it's up to thhe MPI implementation whether this program will deadlock or not.
+This code can deadlock as the order of the blocking Send and Recv messages is the same for the processes with rank==1 and rank==0. One process should be in the Recv mode while the other one is in the Send mode for the program to function correctly using all MPI libraries.
 
-(Stackoverflow explanation)
+(Stackoverflow explanation) MPI_Send may or may not block. It will block until the sender can reuse the sender buffer. Some implementations will return to the caller when the buffer has been sent to the communication layer. Some others will return to the caller when there's a matching MPI_Recv() at the other end. So it's up to thhe MPI implementation whether this program will deadlock or not.
+
+
 
 ``````````````````````````````
   if (my_rank == 0) {
