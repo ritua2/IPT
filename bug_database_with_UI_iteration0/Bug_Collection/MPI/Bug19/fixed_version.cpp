@@ -34,15 +34,12 @@ int main(int argc, char** argv){
    MPI_Bcast(mapper,IN,MPI_INT,0,MPI_COMM_WORLD);
    MPI_Bcast(toMap,IN,MPI_INT,0,MPI_COMM_WORLD);
 
-   int d = IN/p;
-   int i = id*d;
-   i=0;
+   int i = 0;
    while(i<IN){
         result[i] = mapper[toMap[i]];
         i++;
    }
-
-  MPI_Barrier(MPI_COMM_WORLD);
+   MPI_Barrier(MPI_COMM_WORLD);
    if(id == 1){
        for(int n=0; n<IN; n++){   //map results
            printf("[%d -> %d]\n", toMap[n], result[n]);
@@ -50,3 +47,4 @@ int main(int argc, char** argv){
    }
    MPI_Finalize();
    return 0;
+}
