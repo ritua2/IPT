@@ -1,4 +1,4 @@
-Error because of incorrect assignment for variale storage attributes
+Error because of incorrect assignment for variable attributes
 In the buggy version:
 ``````````````````````````````
 #pragma omp parallel for shared (i) reduction (+: sum)
