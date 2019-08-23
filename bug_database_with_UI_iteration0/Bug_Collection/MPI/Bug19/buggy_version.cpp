@@ -22,19 +22,20 @@ int main(int argc, char** argv){
    int result[IN];
    if(id==0){
        for(int n=0; n<IN; n++){   //predecided map values
-           toMap[n] = rand()%IN;
-           mapper[n] = rand()%101;
+           toMap[n] = (rand()%IN);
+           mapper[n] = (rand()%IN) ;
        }
-       printf("\n");
    }
    if(id == 0){
        for(int n=0; n<IN; n++){   //map results
            printf("[%d -> %d]\n", toMap[n], mapper[n]);
        }
    }
-   int d = IN/p;
-   int i = id*d;
-   while(i<id*d+d && i<IN){
+   MPI_Bcast(mapper,IN,MPI_INT,0,MPI_COMM_WORLD);
+   MPI_Bcast(toMap,IN,MPI_INT,0,MPI_COMM_WORLD);
+
+   int i = 0;
+   while(i<IN){
         result[i] = mapper[toMap[i]];
         i++;
    }
