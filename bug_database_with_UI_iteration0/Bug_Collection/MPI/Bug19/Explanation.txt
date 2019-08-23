@@ -1,5 +1,9 @@
-Missing Bcast to distributed the array.
-In details, in the buggy version:
+In the buggy version, the array values are used without being initialized by MPI process with id ==1. Depending upon the exisitng value of the arrays, one can get segementation fault while executing this statement: result[i] = mapper[toMap[i]];
+
+Note that, only process with id==0 has the values of the arrays "mapper" and "toMap" set. This process should broadcast (or share) the values in these arrays with other MPI processes if they need to use these arrays in the way as shown in the buggy_version.cpp.
+
+
+The buggy version has:
 ``````````````````````````````
    if(id==0){
        for(int n=0; n<IN; n++){   //predecided map values
@@ -20,7 +24,7 @@ In details, in the buggy version:
         i++;
    }
 ``````````````````````````````
-There is no communication between tasks, therefore the other tasks that are supposed to receive data from root are not perform the calculation correctly.
+There is no communication between tasks, therefore the other tasks that are supposed to receive data from root are not performing the calculations correctly.
 
 
 * Error message
