@@ -1,4 +1,6 @@
-Dangerous practice with initializing array used in MPI call.
+The program gives segmentation fault as matrix txMatrix is allocated memory and initialized only on MPI process with rank ==0. However, MPI_Scatterv call is visible to all the MPI processes associated with the MPI_COMM_WORLD communicator. When processes other than the process with rank == 0 see/evaluate &txMatrix[0][0] - the first argument to MPI_Scatter - that hey have not yet allocated the memory for, they experience segementation fault.
+
+
 In details, in the buggy version:
 ``````````````````````````````
  MPI_Scatterv(&txMatrix[0][0], sendcMat, displMat, MPI_INT, &rxMatrix[0][0], sendcMat[rank], MPI_INT, 0, MPI_COMM_WORLD);
