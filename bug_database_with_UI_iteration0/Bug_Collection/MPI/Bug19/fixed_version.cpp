@@ -22,10 +22,9 @@ int main(int argc, char** argv){
    int result[IN];
    if(id==0){
        for(int n=0; n<IN; n++){   //predecided map values
-           toMap[n] = rand()%IN;
-           mapper[n] = rand()%101;
+           toMap[n] = (rand()%IN);
+           mapper[n] = (rand()%IN) ;
        }
-       printf("\n");
    }
    if(id == 0){
        for(int n=0; n<IN; n++){   //map results
@@ -33,14 +32,17 @@ int main(int argc, char** argv){
        }
    }
    MPI_Bcast(mapper,IN,MPI_INT,0,MPI_COMM_WORLD);
+   MPI_Bcast(toMap,IN,MPI_INT,0,MPI_COMM_WORLD);
 
    int d = IN/p;
    int i = id*d;
-   while(i<id*d+d && i<IN){
+   i=0;
+   while(i<IN){
         result[i] = mapper[toMap[i]];
         i++;
    }
-   MPI_Barrier(MPI_COMM_WORLD);
+
+  MPI_Barrier(MPI_COMM_WORLD);
    if(id == 1){
        for(int n=0; n<IN; n++){   //map results
            printf("[%d -> %d]\n", toMap[n], result[n]);
@@ -48,4 +50,3 @@ int main(int argc, char** argv){
    }
    MPI_Finalize();
    return 0;
-}
