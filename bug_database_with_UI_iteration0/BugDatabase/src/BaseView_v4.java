@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
+import java.nio.file.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -430,27 +431,37 @@ public class BaseView_v4 {
 		jPanel2.add(lowerPanel);
 			
 		try {
-			file = new File(path + "/fixed_version.c");
-		    file1 = new File(path + "/buggy_version.c");
+			File file0 = new File(path);
+			for(File file3: file0.listFiles()){
+				
+				if (file3.getName().startsWith("fixed_version.")) {
+					//file = new File(file3.getAbsolutePath().toString());
+					file = file3;
+				}else if(file3.getName().startsWith("buggy_version."))
+					file1 = file3;
+			}
+			//file = new File(path + "/fixed_version.c");
+		    //file1 = new File(path + "/buggy_version.c");
 		    file2 = new File(path + "/Explanation.txt");
 		}catch (Exception e) {
-		    file = new File(path + "/fixed_version.cu");
-		    file1 = new File(path + "/buggy_version.cu");
+		    //file = new File(path + "/fixed_version.cu");
+		    //file1 = new File(path + "/buggy_version.cu");
+			e.printStackTrace();
+		}
+		
+		try {
+			input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		    tareaFixed.read(input, "READING FIXED FILE :-)");
+		} catch(FileNotFoundException fnfe){
+			tareaFixed.setText("The File is Missing!!!");
+		} catch (Exception e){
+		    e.printStackTrace();
 		}
 		
 		try{
 			input = new BufferedReader(new InputStreamReader(new FileInputStream(file1)));
 		    tareaBuggy.read(input, "READING BUGGY FILE :-)");
 	    } catch(FileNotFoundException fnfe){
-			tareaFixed.setText("The File is Missing!!!");
-		} catch (Exception e){
-		    e.printStackTrace();
-		}
-		    
-		try {
-			input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		    tareaFixed.read(input, "READING FIXED FILE :-)");
-		} catch(FileNotFoundException fnfe){
 			tareaFixed.setText("The File is Missing!!!");
 		} catch (Exception e){
 		    e.printStackTrace();
