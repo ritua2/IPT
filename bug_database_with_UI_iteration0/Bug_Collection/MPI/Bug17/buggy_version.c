@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     char str[100],a[100],a1[100];
     if (rank == 0) {
         //Note from Ritu: The below statement os incorrect - use strcpy instead
-        str =  "abcd";        
+        //str =  "abcd";        
         strcpy(str, "abcd");
     }
 
