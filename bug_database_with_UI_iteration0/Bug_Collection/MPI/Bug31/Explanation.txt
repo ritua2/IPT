@@ -1,9 +1,4 @@
-Error: incorrect choice of collectives for handling data distribution
-
-In this case, 2 elements are updated in one iteration except for the last iteration.
-
-The buggy version does not handle this case.
-
+Two array elements are being updated in the each iteration. If the array length is an odd number that is not completely divisble by the number of MPI processes (size) used to run the program, there would be some calculations related to the update of the odd/even numbered array elements that would not be executed. Hence, the result will be incorrect. This program should typically be restructured.
 
 * Error message
 
