@@ -1,4 +1,5 @@
-Error: incorrect choice of collectives for handling data distribution
+//Note from Ritu: need to revisit this explanation.
+Error: incorrect output due to choice of the collective for handling data distribution.
 
 In this case, 2 elements are updated in one iteration except for the last iteration.
 
