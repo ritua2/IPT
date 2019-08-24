@@ -1,5 +1,12 @@
 Two array elements are being updated in the each iteration. If the array length is an odd number that is not completely divisble by the number of MPI processes (size) used to run the program, there would be some calculations related to the update of the odd/even numbered array elements that would not be executed. Hence, the result will be incorrect. This program should typically be restructured.
 
+Example:
+
+99 is the array length, and assume that we are running this with two MPI processes.
+
+Then for process with rank 0, when i = 24, as per the logic and equatiosn for array updates used in this program, the 49th element may not get updated correctly.
+
+
 * Error message
 
 None
