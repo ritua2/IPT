@@ -33,11 +33,12 @@ int main()
   {  
     arr[(i-5)*2+1]=rev[i];
   }
+  }  
   if (rank == 0) {
     for (int i = 0; i < 10; i++) {
       printf("rev[%d] is %d\n",i,rev[i]);
     }
   }
-  }
+  
   return 0;
 }
