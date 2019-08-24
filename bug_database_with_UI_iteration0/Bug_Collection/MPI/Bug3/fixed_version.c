@@ -38,5 +38,6 @@ int main()
       printf("rev[%d] is %d\n",i,rev[i]);
     }
   }
+  }
   return 0;
 }
