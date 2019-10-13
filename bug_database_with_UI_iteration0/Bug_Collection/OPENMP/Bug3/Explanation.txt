@@ -3,7 +3,7 @@ In the buggy version:
 ``````````````````````````````
 #pragma omp parallel for shared (i) reduction (+: sum)
 ``````````````````````````````
-The loop index is actually not shared, each OpenMP thread needs to have their own index.
+The loop index is actually not shared, each OpenMP thread needs to have its own copy of the loop variable so that it knows its start and stop conditions.
 
 
 * Error message
