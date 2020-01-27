@@ -13,7 +13,7 @@ The *.zip file named testing_scripts.zip contains
 3) a bash script to test the code correctness, and 
 4) sample input files (*.txt)
 
-The core IPT code will be made available shortly under the new BSD license.
+All the content made in this repository has been made available under the new BSD license.
 
 # IPT web-portal 
 The IPT web-portal related assets are available at the following links:
