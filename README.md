@@ -16,7 +16,13 @@ The *.zip file named testing_scripts.zip contains
 All the content made in this repository has been made available under the new BSD license.
 
 # IPT web-portal 
-The IPT web-portal related assets are available at the following links:
+
+The code related to the latest version of IPT web (https://iptweb.tacc.utexas.edu/entry) is accesible at:
+https://github.com/ritua2/gib
+
+The IPT web portal code can beeasily customized for building new gateways that need interactive and batch computing mode.
+
+The assets related to the previous version of IPT web are available at the following links:
 https://github.com/ritua2/ipt-web 
 https://bitbucket.org/jstubbs/ipt-web/src
 
