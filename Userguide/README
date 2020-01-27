@@ -1,1 +1,1 @@
-This folder contains the user-guide for parallelizing applications using IPT.
+This folder includes a chapter on general overview of parallel programming. The user-guides for generating MPI, OpenMP, and CUDA code using IPT will be added in this folder. Currently, only the OpenMP user-guide has been uploaded.
