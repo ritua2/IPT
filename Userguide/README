@@ -1,2 +1,2 @@
-This folder includes a chapter on general overview of parallel programming. The user-guides for generating MPI, OpenMP, and CUDA code 
+This folder includes a chapter on general overview of parallel programming. A chapter on the basic concepts required for understanding parallel programming is also included. to The user-guides for generating MPI, OpenMP, and CUDA code 
 using IPT will be added in this folder. Currently, only the user-guide on using IPT for generating OpenMP code has been uploaded.
