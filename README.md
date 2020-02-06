@@ -22,7 +22,7 @@ https://github.com/ritua2/gib
 
 The IPT web portal code can be easily customized for building new gateways (web-portals) for providing both interactive and batch computing modes.
 
-The assets related to the previous version of IPT web are available at the following links:
+The assets related to the previous version of IPT web portal are available at the following links:
 https://github.com/ritua2/ipt-web 
 https://bitbucket.org/jstubbs/ipt-web/src
 
