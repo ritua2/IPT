@@ -13,7 +13,7 @@ The *.zip file named testing_scripts.zip contains
 3) a bash script to test the code correctness, and 
 4) sample input files (*.txt)
 
-All the content in this repository has been made available under the new BSD license.
+The entire content in this repository has been made available under the new BSD license.
 
 # IPT web-portal 
 
