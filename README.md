@@ -1,6 +1,6 @@
 # Interactive Parallelization Tool (IPT)
 
-This repository contains the IPT binaries, scripts and code for testing IPT, training material related to teaching parallel programming with IPT, link to the repository for the ipt-web code, code for teaching logical errors in parallel programs, and some translator code.
+This repository contains the IPT binaries, scripts and code for testing IPT, training material related to teaching parallel programming with IPT, link to the repository for the IPT web-portal code, code for teaching logical errors in parallel programs, and some translator code.
 
 The IPT binary for the Stampede2 system at TACC is available at the following paths:
 1) https://github.com/ritua2/IPT/tree/master/PEARC18_OMP
