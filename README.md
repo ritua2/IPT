@@ -17,7 +17,7 @@ The entire content in this repository has been made available under the new BSD 
 
 # IPT web-portal 
 
-The lastest IPT web-portal is here:  https://iptweb.utsa.edu/
+The latest IPT web-portal is here:  https://iptweb.utsa.edu/
 
 The code related to the latest version of IPT web is accesible at:
 https://github.com/ritua2/gib
